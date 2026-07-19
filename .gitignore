@@ -1,0 +1,15 @@
+# Next.js Frontend Caches & Build Files
+vekai-frontend/.next/
+vekai-frontend/out/
+vekai-frontend/build/
+
+# Node Modules (Both Environments)
+**/node_modules/
+
+# Security Keys & Environment Variables (CRITICAL)
+**/.env
+**/.env.local
+
+# Operating System Trash Files
+**/.DS_Store
+Thumbs.db
