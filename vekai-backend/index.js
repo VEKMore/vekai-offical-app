@@ -1,9 +1,13 @@
-import 'dotenv/config'; // 🌟 Enforces loading your keys from your .env file
+import 'dotenv/config'; 
 import { fal } from "@fal-ai/client";
 import express from "express";
+import cors from "cors"; // 🌟 ADD THIS LINE
 
 const app = express();
 app.use(express.json());
+
+// 🌟 ADD THIS LINE TO PERMIT ANY WEBBROWSER ACCESSIBILITY
+app.use(cors({ origin: '*' })); 
 
 // Root path to confirm the server status
 app.get("/", (req, res) => {
