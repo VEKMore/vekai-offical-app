@@ -6,7 +6,7 @@ import OverlayLayout from '../components/OverlayLayout';
 // Base64 template videos hosted inside public directory
 const VIDEO_TEMPLATE = "https://fals.ai";
 // Point your frontend requests straight to your live backend server instance on port 3001
-const BACKEND_ENDPOINT = "http://localhost:3001/api/transform-avatar";
+const BACKEND_ENDPOINT = "https://vekai-offical-app.up.railway.app";
 
 export default function HomeStudio() {
   const [appState, setAppState] = useState('picker'); // 'picker', 'camera', 'processing', 'result'
