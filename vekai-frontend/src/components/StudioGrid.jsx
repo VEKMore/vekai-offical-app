@@ -1,4 +1,3 @@
-cat << 'EOF' > ./vekai-frontend/src/components/StudioGrid.jsx
 import React from 'react';
 
 const CATEGORIES = [
@@ -29,4 +28,3 @@ export default function StudioGrid({ onSelectCategory }) {
     </div>
   );
 }
-EOF
