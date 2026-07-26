@@ -1,5 +1,3 @@
-cat << 'EOF' > ./src/components/StoreView.jsx
-import React, { useState } from 'react';
 
 const ALL_PRODUCTS = [
   { id: 'p1', name: 'RHYTHM STAGE EXCLUSIVE PRINT', price: '$24.99', type: 'Poster/Print', desc: 'Premium poster celebrating the best Rhythm Wars performances.', scene: 'Rhythm Stage', tag: 'Standard' },
