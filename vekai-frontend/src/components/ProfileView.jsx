@@ -157,9 +157,16 @@ export default function ProfileView({ onNavigate }) {
         </section>
 
         {/* MY MERCHANDISE SECTION */}
-        <section className="w-full flex flex-col gap-3">
-          <h3 className="text-white font-black text-xs tracking-widest uppercase border-b border-white/5 pb-2">MY MERCHANDISE</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {MERCHANDISE.map((merch) => (
-              <div key={merch.id} className="bg-[#0c0b11] border border-white/5 p-3 rounded-lg flex flex-col gap-2 justify-between group">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+  {MERCHANDISE.map((merch) => (
+    <div
+      key={merch.id}
+      className="bg-[#0c0b11] border border-white/5 p-3 rounded-lg flex flex-col gap-2 justify-between group"
+    >
+      <div className="text-sm text-white/60">[{merch.category}]</div>
+      <div className="font-semibold">{merch.name}</div>
+      <div className="text-xs text-white/50">{merch.price}</div>
+    </div>
+  ))}
+</div>
 [ {merch.category} ]{merch.category}{merch.name}{merch.price}))}{/* MY COMMUNITY SUBMISSIONS SECTION */});}
