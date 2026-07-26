@@ -1,136 +1,119 @@
 import React, { useState } from 'react';
+import StoreView from '../components/StoreView';
 
-// Factual inventory mapped directly from the verified design specification layout
-const PRODUCTS_DATA = [
-  { id: 'p1', name: 'RHYTHM STAGE EXCLUSIVE PRINT', price: '$24.99', type: 'Poster/Print', desc: 'Premium poster celebrating the best Rhythm Wars performances.', banner: 'Standard' },
-  { id: 'p2', name: 'URBAN LEGEND UNISEX HOODIE', price: '$54.99', type: 'Apparel', desc: 'Classic hoodie with urban hero iconography, available in multiple sizes.', banner: 'Standard' },
-  { id: 'p3', name: 'GROOVE ODYSSEY CANVAS PRINT', price: '$44.99', type: 'Home Decor', desc: 'Canvas wall art print from the iconic Groove Odyssey stage.', banner: 'Standard' },
-  { id: 'p4', name: 'VELVET RUNWAY ENAMEL PIN SET', price: '$14.99', type: 'Accessory', desc: 'Handcrafted enamel pin set inspired by the Velvet Runway Fashion Show scene.', banner: 'Standard' },
-  { id: 'p5', name: 'GROOVE ODYSSEY DIGITAL COLLECTIBLE TOKEN', price: '$9.99', type: 'Digital Collectible', desc: 'A rare digital collectible tied to the Groove Odyssey Musical scene.', banner: 'Standard' },
-  { id: 'p6', name: 'SHADOWSTRIKE POSTER SERIES VOL.1', price: '$19.99', type: 'Poster/Print', desc: 'High-quality print poster capturing the most iconic Shadowstrike scenes.', banner: 'Standard' },
-  { id: 'p7', name: 'NEON FRONTIER HERO TEE', price: '$34.99', type: 'Apparel', desc: 'Limited-edition campaign tee featuring the Hero emblem from Neon Frontier.', banner: 'Standard' }
+const MAGAZINE_SECTIONS = [
+  { id: '1', title: 'The Cyberpunk Chronicles', genre: 'Sci-Fi', size: 'hero', image: 'https://fals.ai', desc: 'Step directly into neo-neon matrix pipelines where identities are completely decentralized.' },
+  { id: '2', title: 'Monaco Speed Grid', genre: 'Racing', size: 'sub', image: 'https://fals.ai', desc: 'High-velocity F1 identity mapping frames.' }
 ];
 
-export default function RoleverseStoreDashboard() {
-  const [activeType, setActiveType] = useState('All Types');
-  const [sceneQuery, setSceneQuery] = useState('');
-  const [shoppingCart, setShoppingCart] = useState([]);
+export default function AppEntryRouter() {
+  const [currentView, setCurrentView] = useState('magazine');
+  const [hasVoted, setHasVoted] = useState(false);
 
-  const processedCatalog = PRODUCTS_DATA.filter(item => {
-    const typePass = activeType === 'All Types' || item.type === activeType;
-    const scenePass = sceneQuery === '' || item.name.toLowerCase().includes(sceneQuery.toLowerCase()) || item.desc.toLowerCase().includes(sceneQuery.toLowerCase());
-    return typePass && scenePass;
-  });
+  const totalVotes = 142 + 89 + (hasVoted ? 1 : 0);
+  const pctA = Math.round(((142 + (hasVoted ? 1 : 0)) / totalVotes) * 100);
+
+  if (currentView === 'roleverse_dashboard') {
+    return (
+      <div className="relative w-full min-h-screen">
+        <StoreView />
+        <button 
+          onClick={() => setCurrentView('magazine')} 
+          className="fixed top-4 right-4 bg-[#FF007F] text-white font-mono text-xs px-4 py-2.5 rounded-sm z-50 shadow-xl uppercase font-black tracking-widest cursor-pointer"
+        >
+          ✕ Return to Mobile Hub
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full min-h-screen bg-[#14131a] text-[#f5f5f7] font-sans flex antialiased select-none">
-      
-      {/* 🧭 LEFT COLUMN PANEL: SIDE NAVIGATION DECK */}
-      <aside className="w-[240px] bg-[#0c0b11] border-r border-white/5 p-5 flex flex-col justify-between shrink-0 min-h-screen">
-        <div className="flex flex-col gap-6">
-          {/* Main Identity Banner Brand Element */}
-          <div className="flex items-center gap-3 px-2 py-1">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#9d4edd] to-[#00ffcc] flex items-center justify-center text-black font-black text-xs">R</div>
-            <span className="font-black text-xs tracking-[0.2em] text-white">ROLEVERSE</span>
-          </div>
+    <div className="w-full h-screen bg-[#0A0A0C] flex justify-center items-center overflow-hidden font-serif antialiased text-[#F5F5F7] select-none">
+      <div className="relative w-full max-w-[430px] h-full max-h-[932px] bg-[#0A0A0C] shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col justify-between scrollbar-none pb-8">
+        
+        {/* VIEW 1: MAGAZINE GRID */}
+        {currentView === 'magazine' && (
+          <div className="w-full flex flex-col p-6 gap-6 animate-fadeIn">
+            <div className="w-full border-b-4 border-[#F5F5F7] pb-3 pt-8 flex flex-col gap-1">
+              <div className="w-full flex justify-between items-end">
+                <h1 className="font-sans font-black text-3xl tracking-[0.2em] text-[#F5F5F7]">VEKAI</h1>
+                <button 
+                  onClick={() => setCurrentView('roleverse_dashboard')} 
+                  className="font-sans font-black text-[9px] tracking-widest text-[#00FFCC] bg-[#00FFCC]/10 px-2.5 py-1 rounded-sm uppercase cursor-pointer"
+                >
+                  🛒 FULL DASHBOARD
+                </button>
+              </div>
+              <div className="w-full flex justify-between items-center mt-1 text-[9px] font-sans font-bold tracking-wider text-gray-500 uppercase">
+                <span>Roleverse Architecture // Staging</span>
+                <span>July 2026</span>
+              </div>
+            </div>
 
-          {/* User Account Verification Segment */}
-          <div className="bg-white/[0.02] border border-white/5 p-3 rounded-lg flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center text-sm">👤</div>
-            <div className="flex flex-col overflow-hidden">
-              <span className="text-[10px] text-gray-500 font-bold tracking-wide uppercase truncate">testuser@example.com</span>
-              <span className="text-[9px] text-[#00ffcc] font-black tracking-widest uppercase mt-0.5">Creator Tier</span>
+            <div className="w-full flex flex-col gap-5">
+              {MAGAZINE_SECTIONS.map((item) => (
+                <div key={item.id} onClick={() => setCurrentView('camera')} className="w-full group cursor-pointer border-b border-white/5 pb-5 last:border-b-0 flex flex-col gap-3">
+                  <div className="w-full aspect-[16/10] bg-neutral-900 overflow-hidden relative">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                    <span className="absolute top-3 left-3 bg-white text-black font-sans font-black text-[9px] tracking-widest px-2 py-0.5 uppercase z-20">{item.genre}</span>
+                  </div>
+                  <h2 className="font-black text-xl leading-tight text-[#F5F5F7] group-hover:text-[#00FFCC] transition-colors">{item.title}</h2>
+                  <p className="text-gray-400 text-xs font-sans leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
+        )}
 
-          {/* Navigation Action Loops */}
-          <div className="flex flex-col gap-1">
-            {['Home', 'Explore', 'Community', 'Campaigns', 'Store'].map((tab) => (
-              <button key={tab} className={`w-full text-left px-3 py-2.5 rounded-md text-[11px] font-black tracking-wider uppercase transition-all ${tab === 'Store' ? 'bg-[#9d4edd]/20 text-[#00ffcc] border border-[#00ffcc]/20' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}>
-                {tab === 'Store' ? '🔹' : '▪'} {tab}
-              </button>
-            ))}
-          </div>
-
-          <div className="w-full h-px bg-white/5 my-1" />
-
-          <div className="flex flex-col gap-1">
-            {['My Avatar', 'My Scenes', 'My Feed', 'Active Campaigns', 'Merchandise Store'].map((tab) => (
-              <button key={tab} className={`w-full text-left px-3 py-2.5 rounded-md text-[11px] font-black tracking-wider uppercase transition-all ${tab === 'Merchandise Store' ? 'text-white' : 'text-gray-500 hover:text-white'}`}>
-                {tab === 'Merchandise Store' ? '🏷️' : '▫'} {tab}
-              </button>
-            ))}
-          </div>
-
-          {/* Steal the Spotlight Callout Widget Overlay Box */}
-          <div className="w-full bg-gradient-to-br from-[#9d4edd]/30 to-black/40 border border-[#9d4edd]/20 p-4 rounded-xl mt-4 flex flex-col gap-2.5">
-            <h4 className="text-[10px] font-black tracking-widest uppercase text-white">STEAL THE SPOTLIGHT</h4>
-            <p className="text-gray-400 text-[10px] leading-normal">Cast yourself into a new scene and climb today's leaderboard.</p>
-            <button className="w-full bg-[#9d4edd] text-white text-[9px] font-black tracking-widest py-2 rounded-md uppercase hover:bg-[#7b2cbf] transition-colors">Cast a Scene</button>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-3 px-2 text-[10px] font-bold text-gray-500 tracking-wider">
-          <button className="text-left hover:text-white uppercase">Community Hub</button>
-          <button className="text-left hover:text-white uppercase">Account Settings</button>
-        </div>
-      </aside>
-
-      {/* 💻 RIGHT COLUMN PANEL: MASTER DASHBOARD CONTAINER CONTROLLER */}
-      <main className="flex-1 p-6 lg:p-10 flex flex-col gap-8 overflow-y-auto w-full">
-        
-        {/* Dynamic Global Header Status Bar */}
-        <header className="w-full flex justify-between items-center border-b border-white/5 pb-4">
-          <div className="flex items-center gap-4 text-xs text-gray-400 font-mono tracking-wider">
-            <span>Server Pipeline: Status Online</span>
-          </div>
-          <button className="bg-white/5 border border-white/10 px-4 py-2 text-[10px] font-black tracking-widest uppercase rounded-sm hover:bg-white/10 transition-all">Log Out</button>
-        </header>
-
-        {/* 🪟 UPPER HERO REGION: THE ROLEVERSE STORE HERO PROMOTION CANVASES */}
-        <section className="w-full bg-[#1b1924] border border-white/10 rounded-xl p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden shadow-xl">
-          <div className="flex flex-col gap-4 max-w-xl z-10">
-            <h2 className="text-3xl font-black tracking-wide text-white">THE ROLEVERSE STORE</h2>
-            <p className="text-gray-400 text-xs font-serif leading-relaxed italic max-w-md">
-              Wear the role. Own the moment. Shop merch tied to the scenes and community cuts you love.
-            </p>
-            <button className="bg-[#ffb703] text-black font-black px-6 py-3 text-[10px] tracking-widest uppercase rounded-md shadow-md shadow-[#ffb703]/10 hover:scale-[1.02] transition-transform self-start">
-              Add Merchandise
+        {/* VIEW 2: CAMERA VIEWPORT */}
+        {currentView === 'camera' && (
+          <div className="w-full h-full p-6 pt-14 flex flex-col justify-between items-center animate-fadeIn relative">
+            <div className="w-full flex justify-between items-center z-10 font-sans">
+              <button onClick={() => setCurrentView('magazine')} className="text-xs font-bold text-gray-400 tracking-wider hover:text-white cursor-pointer">✕ CANCEL</button>
+              <span className="text-[11px] font-black tracking-[0.2em] text-white">IDENTITY SCAN</span>
+              <div className="w-10" />
+            </div>
+            <div className="w-[230px] h-[230px] border-4 border-[#F5F5F7] rounded-full flex items-center justify-center relative my-auto shadow-2xl">
+              <div className="w-[210px] h-[210px] border border-dashed border-[#00FFCC]/40 rounded-full animate-spin [animation-duration:20s]" />
+            </div>
+            <button onClick={() => { setCurrentView('compiling'); setTimeout(() => setCurrentView('result'), 2000); }} className="w-16 h-16 rounded-full border-4 border-[#F5F5F7] p-1 mb-8 cursor-pointer">
+              <div className="w-full h-full rounded-full bg-[#F5F5F7]" />
             </button>
           </div>
-          {/* Blueprint Visual Reference Image Frame Layout Container */}
-          <div className="w-[280px] aspect-[16/10] bg-neutral-900 border border-white/10 flex items-center justify-center text-center p-4 relative shrink-0 overflow-hidden shadow-2xl rounded-md">
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-transparent to-transparent" />
-            <span className="text-white/20 text-[9px] font-mono tracking-widest uppercase">[ Staging Frame Placeholder ]</span>
-          </div>
-        </section>
+        )}
 
-        {/* 🏷️ CAMPAIGN EXCLUSIVE DROP GRID TRACK REGIONS */}
-        <section className="w-full flex flex-col gap-4">
-          <div className="w-full flex justify-between items-end border-b border-white/5 pb-2">
-            <div>
-              <span className="text-[9px] text-[#ff0055] font-black uppercase tracking-widest block">Campaign Exclusive Drop</span>
-              <h3 className="text-white font-black text-base tracking-wide mt-0.5">BE THE LEAD—LIMITED COLLECTION</h3>
-            </div>
-            <div className="bg-[#ff0055]/10 border border-[#ff0055]/20 text-[#ff0055] font-mono text-[11px] px-3 py-1.5 rounded-sm tracking-widest animate-pulse font-bold">
-              Drops ends in: 02:14:39
-            </div>
+        {/* VIEW 3: COMPILING RUNTIME */}
+        {currentView === 'compiling' && (
+          <div className="w-full h-full flex flex-col justify-center items-center p-8 text-center bg-[#0A0A0C]">
+            <h2 className="text-2xl font-black italic tracking-widest text-[#F5F5F7] animate-pulse">GENERATING PAGE...</h2>
+            <p className="font-sans text-xs text-gray-500 mt-4 uppercase tracking-widest">Assembling Identity Matrices cleanly // Staging Stacks</p>
           </div>
+        )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* EXCLUSIVE DROP PRODUCT 1 */}
-            <div className="bg-[#0c0b11] border border-white/10 p-5 rounded-lg flex flex-col gap-4 justify-between group">
-              <div className="flex flex-col gap-2">
-                <span className="bg-[#ffb703] text-black font-black text-[9px] tracking-widest px-2.5 py-0.5 rounded-sm self-start uppercase">Exclusive</span>
-                <h4 className="text-white font-black text-sm mt-1 tracking-wide group-hover:text-[#00ffcc] transition-colors">NEON FRONTIER HERO TEE</h4>
-                <span className="text-gray-400 font-mono text-xs font-bold">$34.99</span>
+        {/* VIEW 4: DYNAMIC FEEDBACK RESULTS LOOP */}
+        {currentView === 'result' && (
+          <div className="w-full p-6 pt-14 flex flex-col justify-between gap-6 animate-fadeIn">
+            <div className="w-full flex justify-between items-center font-sans border-b border-white/5 pb-4">
+              <button onClick={() => setCurrentView('magazine')} className="text-xs font-black tracking-widest text-gray-400 hover:text-white cursor-pointer">✕ DISMISS</button>
+              <button onClick={() => setCurrentView('roleverse_dashboard')} className="text-xs font-black tracking-widest text-[#00FFCC] bg-[#00FFCC]/10 px-3 py-1.5 rounded-sm uppercase cursor-pointer">🛒 OPEN FULL STORE</button>
+            </div>
+            <div className="w-full aspect-[16/10] bg-neutral-900 border border-white/10 flex items-center justify-center relative">
+              <span className="text-[10px] font-sans font-black tracking-widest text-white/30 uppercase">[ Face-Swapped Output Asset ]</span>
+            </div>
+            <div className="w-full flex flex-col gap-4 bg-white/[0.01] border border-white/5 p-5 rounded-sm">
+              <h4 className="font-black text-base text-[#F5F5F7]">Does this dynamic representation match the selection mood context?</h4>
+              <div className="flex flex-col gap-2.5 font-sans">
+                <button onClick={() => setHasVoted(true)} className="w-full h-12 bg-transparent border border-[#F5F5F7]/30 text-left px-4 flex justify-between items-center text-xs text-white font-bold relative overflow-hidden cursor-pointer">
+                  {hasVoted && <div className="absolute inset-y-0 left-0 bg-[#00FFCC]/10" style={{ width: `${pctA}%` }} />}
+                  <span className="z-10">Absolute Hero Cut Alignment</span>
+                  {hasVoted && <span className="text-[#00FFCC] font-black z-10">{pctA}%</span>}
+                </button>
               </div>
-              <button onClick={() => setShoppingCart(prev => [...prev, 'p7'])} className="w-full bg-[#9d4edd] text-white font-black py-3 text-[10px] tracking-widest uppercase rounded-md shadow-md transition-transform active:scale-[0.99]">View Item</button>
             </div>
+          </div>
+        )}
 
-            {/* EXCLUSIVE DROP PRODUCT 2 */}
-            <div className="bg-[#0c0b11] border border-white/10 p-5 rounded-lg flex flex-col gap-4 justify-between group">
-              <div className="flex flex-col gap-2">
-                <span className="bg-[#ffb703] text-black font-black text-[9px] tracking-widest px-2.5 py-0.5 rounded-sm self-start uppercase">Exclusive</span>
-SHADOWSTRIKE POSTER SERIES VOL.1$19.99<button onClick={() => setShoppingCart(prev => [...prev, 'p6'])} className="w-full bg-[#9d4edd] text-white font-black py-3 text-[10px] tracking-widest uppercase rounded-md shadow-md transition-transform active:scale-[0.99]">View Item{/* 🔍 FILTER REGION ENGINE LAYOUT MODULE CARDS CONTAINER */}{/* 📦 THE GENERAL SELECTION ITEM CATALOGUE STACKS DIRECT GRIDS */}{processedCatalog.map((product) => ())}{/* 🎬 SCENE COLLECTION BUNDLE SLOTS GRID MATRIX SECTION */}{/* Floating Shopping Bag Tray Action HUD Overlay Component Widget */}{shoppingCart.length > 0 && (🛍️ CART COUNT{shoppingCart.length}<button onClick={() => setShoppingCart([])} className="text-[9px] border-l border-black/20 pl-2 opacity-60 hover:opacity-100 uppercase">Clear)});}
----
+      </div>
+    </div>
+  );
+}
