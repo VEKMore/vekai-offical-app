@@ -133,4 +133,3 @@ export default function AvatarBuilderView({ onNavigate }) {
                   </div>
                 </div>
               </div>
-ROLES & OVERLAYSRole ArchetypeSelect archetypeSidekick / CompanionMain ProtagonistRogue AntagonistProfession OverlaySelect professionDigital ArtistF1 Track DriverCyber RunnerSTYLE & CULTURECultural AttireStyle Accessories);}
