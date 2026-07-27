@@ -1,14 +1,14 @@
 import React from 'react';
 
-export default function ExploreView({ onNavigate }) {
+export default function AvatarBuilderView({ onNavigate }) {
   return (
     <div className="w-full min-h-screen bg-[#111217] text-white flex">
       <aside className="w-64 bg-[#0A0A0C] border-r border-white/5 p-6 flex flex-col gap-6">
         <button onClick={() => onNavigate('profile')} className="text-left text-xs text-gray-400 hover:text-white uppercase">▪ Home</button>
       </aside>
       <main className="flex-1 p-10">
-        <h2 className="text-2xl font-black uppercase">SCENE EXPLORER</h2>
-        <p className="text-gray-400 text-xs mt-2">Browse templates and pick your cinematic deployment target role.</p>
+        <h2 className="text-2xl font-black uppercase">AVATAR STUDIO</h2>
+        <p className="text-gray-400 text-xs mt-2">Configure gender, age, ethnicity, or archetype features cleanly.</p>
       </main>
     </div>
   );

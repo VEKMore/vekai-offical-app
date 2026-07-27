@@ -8,10 +8,14 @@ import ProfileView from '../components/ProfileView';
 export default function AppEntryRouter() {
   const [currentView, setCurrentView] = useState('profile');
 
-  if (currentView === 'avatar_builder') return <AvatarBuilderView onNavigate={setCurrentView} />;
-  if (currentView === 'community') return <CommunityView onNavigate={setCurrentView} />;
-  if (currentView === 'explore') return <ExploreView onNavigate={setCurrentView} />;
-  if (currentView === 'profile') return <ProfileView onNavigate={setCurrentView} />;
+  const handleNavigation = (view) => {
+    setCurrentView(view);
+  };
+
+  if (currentView === 'avatar_builder') return <AvatarBuilderView onNavigate={handleNavigation} />;
+  if (currentView === 'community') return <CommunityView onNavigate={handleNavigation} />;
+  if (currentView === 'explore') return <ExploreView onNavigate={handleNavigation} />;
+  if (currentView === 'profile') return <ProfileView onNavigate={handleNavigation} />;
   
-  return <StoreView onNavigate={setCurrentView} />;
+  return <StoreView onNavigate={handleNavigation} />;
 }
