@@ -140,4 +140,5 @@ export default function DashboardHomeView({ onNavigate }) {
                   <p className="text-gray-300 text-xs italic font-serif pl-4">"{post.text}"</p>
                   <div className="flex gap-4 text-[10px] font-mono text-gray-500 pl-4 border-t border-white/5 pt-2">
                     <span>❤️ {post.likes} Likes</span>
-💬 {post.comments} Comments))});}
+ <span>💬 {post.comments} Comments</span>
+</div>
