@@ -119,4 +119,3 @@ export default function DashboardHomeView({ onNavigate }) {
               ))}
             </div>
           </section>
-{/* OFFICIAL COMMUNITY CUT WINNERS CARDS ROW */}{/* FEATURED SCENES DISPLAY GRID SHEETS */}{/* CREATOR FEED INTERACTIVE LAYOUT SOCIAL STREAM */});}
