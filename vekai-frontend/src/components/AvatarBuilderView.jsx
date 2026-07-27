@@ -13,7 +13,7 @@ export default function AvatarBuilderView({ onNavigate }) {
   return (
     <div className="w-full min-h-screen bg-[#0e0e12] text-white font-sans flex flex-col antialiased select-none">
       
-      {/* TOP NAVIGATION BAR */}
+      {/* 🌐 TOP APP HEADER NAVIGATION BAR */}
       <header className="w-full h-16 bg-[#070709] border-b border-white/5 px-6 flex justify-between items-center shrink-0 z-50">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2">
@@ -133,3 +133,4 @@ export default function AvatarBuilderView({ onNavigate }) {
                   </div>
                 </div>
               </div>
+
