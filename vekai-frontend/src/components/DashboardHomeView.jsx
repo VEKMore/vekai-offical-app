@@ -26,8 +26,6 @@ const FEED_POSTS = [
 export default function DashboardHomeView({ onNavigate }) {
   return (
     <div className="w-full min-h-screen bg-[#0e0e12] text-white font-sans flex flex-col antialiased select-none">
-      
-      {/* TOP APP HEADER NAVIGATION BAR */}
       <header className="w-full h-16 bg-[#070709] border-b border-white/5 px-6 flex justify-between items-center shrink-0 z-50">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2">
@@ -35,7 +33,7 @@ export default function DashboardHomeView({ onNavigate }) {
             <span className="font-sans font-black text-xs tracking-[0.2em] text-gray-500">ROLEVERSE</span>
           </div>
           <nav className="flex items-center gap-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
-            <button onClick={() => onNavigate('profile')} className="text-white transition-colors cursor-pointer bg-transparent border-0 outline-none">Home</button>
+            <button onClick={() => onNavigate('home')} className="text-white transition-colors cursor-pointer bg-transparent border-0 outline-none">Home</button>
             <button onClick={() => onNavigate('explore')} className="hover:text-white transition-colors cursor-pointer bg-transparent border-0 outline-none">Explore</button>
             <button onClick={() => onNavigate('community')} className="hover:text-white transition-colors cursor-pointer bg-transparent border-0 outline-none">Community</button>
             <button onClick={() => onNavigate('store')} className="hover:text-white transition-colors cursor-pointer bg-transparent border-0 outline-none">Store</button>
@@ -44,10 +42,7 @@ export default function DashboardHomeView({ onNavigate }) {
         <button className="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider bg-transparent border-0 outline-none">Log Out</button>
       </header>
 
-      {/* LOWER SPLIT FRAME LAYOUT */}
       <div className="w-full flex flex-1 overflow-hidden">
-        
-        {/* LEFT SIDEBAR PANEL */}
         <aside className="w-60 bg-[#070709] border-r border-white/5 p-6 flex flex-col justify-between shrink-0 hidden md:flex">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col overflow-hidden">
@@ -64,10 +59,7 @@ export default function DashboardHomeView({ onNavigate }) {
           </div>
         </aside>
 
-        {/* MAIN HUB SCROLLABLE VIEWPORT */}
         <main className="flex-1 p-6 lg:p-8 overflow-y-auto flex flex-col gap-8 w-full max-w-7xl mx-auto">
-          
-          {/* BANNER BRAND HERO */}
           <section className="w-full bg-[#15141b] border border-white/5 p-6 rounded-xl">
             <h2 className="text-3xl font-black text-white uppercase tracking-wide">BECOME ANYONE. STAR IN EVERYTHING.</h2>
             <p className="text-gray-400 text-xs font-serif italic mt-2 leading-relaxed">
@@ -75,7 +67,6 @@ export default function DashboardHomeView({ onNavigate }) {
             </p>
           </section>
 
-          {/* LEADERBOARD LIST */}
           <section className="w-full flex flex-col gap-3 bg-[#070709] border border-white/5 p-5 rounded-xl shadow-xl">
             <div className="w-full flex justify-between items-center border-b border-white/5 pb-2">
               <h3 className="text-white font-black text-xs tracking-widest uppercase">LIVE LEADERBOARD CAMPAIGNS</h3>
@@ -94,7 +85,6 @@ export default function DashboardHomeView({ onNavigate }) {
             </div>
           </section>
 
-          {/* CROWN WINNERS SECTIONS */}
           <section className="w-full flex flex-col gap-3">
             <h3 className="text-white font-black text-xs tracking-widest uppercase border-b border-white/5 pb-2">OFFICIAL COMMUNITY CUTS</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -112,7 +102,6 @@ export default function DashboardHomeView({ onNavigate }) {
             </div>
           </section>
 
-          {/* GALLERY CARDS SCENES */}
           <section className="w-full flex flex-col gap-4">
             <h3 className="text-white font-black text-xs tracking-widest uppercase border-b border-white/5 pb-2">FEATURED SCENES</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -128,7 +117,6 @@ export default function DashboardHomeView({ onNavigate }) {
             </div>
           </section>
 
-          {/* SOCIAL NETWORK STREAM FEED */}
           <section className="w-full flex flex-col gap-4">
             <h3 className="text-white font-black text-xs tracking-widest uppercase border-b border-white/5 pb-2">CREATOR FEED</h3>
             <div className="flex flex-col gap-4">
@@ -140,5 +128,14 @@ export default function DashboardHomeView({ onNavigate }) {
                   <p className="text-gray-300 text-xs italic font-serif pl-4">"{post.text}"</p>
                   <div className="flex gap-4 text-[10px] font-mono text-gray-500 pl-4 border-t border-white/5 pt-2">
                     <span>❤️ {post.likes} Likes</span>
- <span>💬 {post.comments} Comments</span>
-</div>
+                    <span>💬 {post.comments} Comments</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+}
