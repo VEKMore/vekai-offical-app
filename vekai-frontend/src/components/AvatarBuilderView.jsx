@@ -13,7 +13,7 @@ export default function AvatarBuilderView({ onNavigate }) {
   return (
     <div className="w-full min-h-screen bg-[#0e0e12] text-white font-sans flex flex-col antialiased select-none">
       
-      {/* 🌐 TOP APP HEADER NAVIGATION BAR */}
+      {/* TOP NAVIGATION BAR */}
       <header className="w-full h-16 bg-[#070709] border-b border-white/5 px-6 flex justify-between items-center shrink-0 z-50">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2">
@@ -31,10 +31,10 @@ export default function AvatarBuilderView({ onNavigate }) {
         <button className="text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider bg-transparent border-0 outline-none">Log Out</button>
       </header>
 
-      {/* LOWER NAVIGATION FRAME CONTEXT DIVISION */}
+      {/* LOWER LAYOUT PANEL SPLIT */}
       <div className="w-full flex flex-1 overflow-hidden">
         
-        {/* 🧭 STATIC LEFT SIDEBAR PANEL */}
+        {/* LEFT SIDEBAR COLUMN */}
         <aside className="w-60 bg-[#070709] border-r border-white/5 p-6 flex flex-col justify-between shrink-0 hidden md:flex">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col overflow-hidden">
@@ -56,33 +56,24 @@ export default function AvatarBuilderView({ onNavigate }) {
               <button className="text-left text-white/90 hover:text-white text-[10px] font-black tracking-wider uppercase bg-black/20 px-3 py-1.5 rounded mt-1 transition-colors self-start">Cast a Scene</button>
             </div>
           </div>
-
-          <div className="flex flex-col gap-2.5 text-[10px] font-bold text-gray-600 uppercase tracking-wider">
-            <button className="text-left hover:text-white">Community Hub</button>
-            <button className="text-left hover:text-white">Account Settings</button>
-          </div>
         </aside>
 
-        {/* 💻 MAIN HUB SUB-PAGE WORKSPACE VIEWPORT */}
+        {/* MAIN WORKSPACE */}
         <main className="flex-1 p-6 lg:p-8 overflow-y-auto flex flex-col gap-6 w-full max-w-7xl mx-auto">
           
-          {/* AVATAR STUDIO HEADER PROMOTION HERO BANNER */}
           <section className="w-full bg-[#15141b] border border-white/5 p-6 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-xl relative overflow-hidden">
             <div className="flex flex-col gap-2 z-10">
               <h2 className="text-2xl font-black tracking-wide text-white uppercase">BOUNDLESS AVATAR STUDIO</h2>
-              <p className="text-gray-400 text-xs leading-relaxed max-w-xl">
-                Build anyone you imagine — any gender, age, ethnicity, or archetype. Your avatar steps into every scene you cast.
-              </p>
+              <p className="text-gray-400 text-xs leading-relaxed max-w-xl">Build anyone you imagine — any gender, age, ethnicity, or archetype. Your avatar steps into every scene you cast.</p>
             </div>
             <div className="bg-gradient-to-r from-[#9d4edd] to-[#a239ea] text-white font-sans font-black text-[9px] tracking-widest px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg shrink-0">
               ✨ No Limits
             </div>
           </section>
 
-          {/* CONFIGURATION CONTENT GRIDS DIVISION SPLIT */}
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
             
-            {/* LEFT SIDE: LIVE PREVIEW ACCENT SHEETS */}
+            {/* LIVE PREVIEW COLUMN */}
             <div className="lg:col-span-4 flex flex-col gap-4">
               <div className="bg-[#070709] border border-white/5 p-5 rounded-xl flex flex-col gap-4 shadow-xl">
                 <h3 className="text-xs font-black tracking-widest uppercase text-gray-400">LIVE PREVIEW</h3>
@@ -92,10 +83,9 @@ export default function AvatarBuilderView({ onNavigate }) {
                   <span className="text-[11px] text-gray-500 font-mono block mt-0.5">Caucasian · Age 24</span>
                 </div>
                 
-                {/* Visual Image Uploader Box Module */}
                 <label className="w-full aspect-[4/3] bg-[#14131a] border border-dashed border-white/10 rounded-lg flex flex-col justify-center items-center text-center relative overflow-hidden cursor-pointer group hover:border-purple-500 transition-colors p-4">
                   {avatarPreview ? (
-                    <img src={avatarPreview} alt="Avatar Frame Preview Instance" className="absolute inset-0 w-full h-full object-cover" />
+                    <img src={avatarPreview} alt="Avatar Preview" className="absolute inset-0 w-full h-full object-cover" />
                   ) : (
                     <span className="text-gray-500 text-xs font-bold uppercase tracking-wider group-hover:text-gray-300 transition-colors">Click to upload an image</span>
                   )}
@@ -104,15 +94,14 @@ export default function AvatarBuilderView({ onNavigate }) {
               </div>
               
               <div className="flex gap-3">
-                <button onClick={() => alert("Avatar parameters fully committed.")} className="flex-1 bg-[#a239ea] hover:bg-[#8b2fd1] text-white font-black text-xs py-3 rounded-md uppercase tracking-wider transition-colors">Save Avatar</button>
+                <button onClick={() => alert("Avatar saved successfully.")} className="flex-1 bg-[#a239ea] hover:bg-[#8b2fd1] text-white font-black text-xs py-3 rounded-md uppercase tracking-wider transition-colors">Save Avatar</button>
                 <button onClick={() => setAvatarPreview(null)} className="flex-1 bg-transparent border border-white/10 text-gray-400 hover:text-white font-black text-xs py-3 rounded-md uppercase tracking-wider transition-colors">Reset</button>
               </div>
             </div>
 
-            {/* RIGHT SIDE: FORMS ATTRIBUTE ARRAYS */}
+            {/* ATTRIBUTE INPUT FORM FORMS */}
             <div className="lg:col-span-8 flex flex-col gap-6">
               
-              {/* PANEL 1: IDENTITY PROPERTIES */}
               <div className="bg-[#070709] border border-white/5 p-5 rounded-xl flex flex-col gap-4 shadow-xl">
                 <h3 className="text-xs font-black tracking-widest uppercase text-gray-400">IDENTITY</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold text-gray-400">
@@ -135,4 +124,13 @@ export default function AvatarBuilderView({ onNavigate }) {
                     </select>
                   </div>
                   <div className="flex flex-col gap-1.5">
-AgeBody Type{/* PANEL 2: ROLES & OVERLAYS PROPERTIES */}ROLES & OVERLAYSRole ArchetypeSelect archetypeSidekick / CompanionMain ProtagonistRogue AntagonistProfession OverlaySelect professionDigital ArtistF1 Track DriverCyber Runner{/* PANEL 3: STYLE & CULTURE PROPERTIES */}STYLE & CULTURECultural AttireStyle Accessories);}
+                    <label className="text-[9px] text-gray-500 uppercase tracking-widest">Age</label>
+                    <input type="text" defaultValue="27" className="bg-[#14131a] border border-white/10 text-xs text-white px-3 py-2.5 rounded-md outline-none font-bold" />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[9px] text-gray-500 uppercase tracking-widest">Body Type</label>
+                    <input type="text" defaultValue="Athletic, tall" className="bg-[#14131a] border border-white/10 text-xs text-white px-3 py-2.5 rounded-md outline-none font-bold" />
+                  </div>
+                </div>
+              </div>
+ROLES & OVERLAYSRole ArchetypeSelect archetypeSidekick / CompanionMain ProtagonistRogue AntagonistProfession OverlaySelect professionDigital ArtistF1 Track DriverCyber RunnerSTYLE & CULTURECultural AttireStyle Accessories);}
