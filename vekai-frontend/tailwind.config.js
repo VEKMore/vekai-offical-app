@@ -25,7 +25,7 @@ module.exports = {
         cyberYellowSoft: '#FFE75A',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Ubuntu', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'glow-sm': '0 20px 60px -50px rgba(0, 0, 0, 0.8)',

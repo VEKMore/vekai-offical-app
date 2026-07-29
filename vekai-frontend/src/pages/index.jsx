@@ -24,6 +24,19 @@ const SCENE_LIBRARY = [
   { id: 'gs9', category: 'Circus Art', title: 'MIDNIGHT CARNIVAL SPECTACULAR', desc: 'A whimsical circus and performance art scene full of acrobatics and color.', roles: '1 role', views: '12,900', image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80' }
 ];
 
+const SCENE_CATEGORIES = [
+  'All Categories',
+  'Action Movie',
+  'AI Original',
+  'Musical/Dance',
+  'Fashion Show',
+  'News Broadcast',
+  'TV Drama',
+  'Sports Event',
+  'Virtual Comic',
+  'Circus Art'
+];
+
 const MERCH_ITEMS = [
   { id: 'm1', title: 'NEON FRONTIER HERO TEE', category: 'Apparel', price: '$34.99' },
   { id: 'm2', title: 'SHADOWSTRIKE POSTER SERIES VOL.1', category: 'Poster/Print', price: '$19.99' },
@@ -67,25 +80,32 @@ export default function RoleverseDashboard() {
 
   const filteredScenes = SCENE_LIBRARY.filter((scene) => {
     const query = searchFilter.toLowerCase();
-    return (
-      scene.title.toLowerCase().includes(query) ||
-      scene.category.toLowerCase().includes(query) ||
-      scene.desc.toLowerCase().includes(query)
-    );
+    const matchesCategory = category === 'All Categories' || scene.category === category;
+    const matchesQuery = [scene.title, scene.category, scene.desc]
+      .join(' ')
+      .toLowerCase()
+      .includes(query);
+
+    return matchesCategory && matchesQuery;
   });
 
   return (
-    <div className="min-h-screen bg-cyberBlack text-cyberWhite font-sans">
+    <div className="relative min-h-screen overflow-hidden bg-cyberBlack text-cyberWhite font-sans">
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[540px] overflow-hidden">
+        <div className="absolute left-0 top-20 h-72 w-72 rounded-full bg-cyberPurple/20 blur-3xl" />
+        <div className="absolute right-0 top-28 h-80 w-80 rounded-full bg-cyberTeal/15 blur-3xl" />
+        <div className="absolute left-1/2 top-4 h-96 w-96 -translate-x-1/2 rounded-full bg-white/5 blur-3xl" />
+      </div>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-cyberSurface/95 px-4 py-4 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-[1480px] items-center justify-between gap-4">
+        <div className="mx-auto flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-8">
             <span className="text-sm font-black uppercase tracking-mega-xl text-white/90">ROLEVERSE</span>
-            <nav className="hidden items-center gap-5 text-3xs font-black uppercase tracking-wider text-cyberGray md:flex">
+            <nav className="hidden items-center gap-5 text-3xs uppercase tracking-wider md:flex">
               {TOP_NAV.map((item) => (
                 <button
                   key={item.key}
                   onClick={() => setActiveTab(item.key)}
-                  className={`transition-colors ${activeTab === item.key ? 'text-white' : 'hover:text-white'} `}
+                  className={`transition-colors ${activeTab === item.key ? 'text-cyberTeal font-black' : 'text-cyberGrayMuted hover:text-white font-semibold'}`}
                 >
                   {item.label}
                 </button>
@@ -96,11 +116,24 @@ export default function RoleverseDashboard() {
             Log Out
           </button>
         </div>
+        <div className="mx-auto mt-4 flex max-w-[1480px] flex-wrap items-center gap-3 md:hidden">
+          {TOP_NAV.map((item) => (
+            <button
+              key={item.key}
+              onClick={() => setActiveTab(item.key)}
+              className={`rounded-full border px-3 py-2 text-[0.65rem] uppercase tracking-[0.35em] transition ${
+                activeTab === item.key ? 'border-cyberTeal bg-cyberTeal/10 text-cyberTeal' : 'border-white/10 bg-white/5 text-cyberGrayMuted hover:border-white/20 hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
       </header>
 
       <div className="pt-24">
         <div className="mx-auto flex w-full max-w-[1480px] gap-6 px-4 pb-12 sm:px-6 lg:px-8">
-          <aside className="hidden w-80 shrink-0 flex-col gap-6 rounded-3xl border border-white/10 bg-cyberSurface/95 p-6 shadow-glow-md md:flex">
+          <aside className="hidden w-80 shrink-0 flex-col gap-6 rounded-3xl border border-white/10 bg-cyberSurface/95 p-6 shadow-glow-md backdrop-blur-xl md:flex">
             <div className="space-y-6">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
                 <div className="flex items-center gap-4">
@@ -117,7 +150,7 @@ export default function RoleverseDashboard() {
                   <button
                     key={item.key}
                     onClick={() => setActiveTab(item.key)}
-                    className={`w-full rounded-2xl px-4 py-3 text-left text-sm font-black uppercase tracking-wide transition ${activeTab === item.key ? 'bg-cyberPanelShade text-cyberTeal' : 'bg-white/5 text-cyberGrayMuted hover:bg-white/10'}`}
+                    className={`w-full rounded-2xl px-4 py-3 text-left text-sm uppercase tracking-wide transition ${activeTab === item.key ? 'bg-cyberPanelShade text-cyberTeal shadow-glow-sm' : 'bg-white/5 text-cyberGrayMuted hover:bg-white/10'}`}
                   >
                     {item.label}
                   </button>
@@ -143,10 +176,24 @@ export default function RoleverseDashboard() {
             {activeTab === 'home' && (
               <div className="space-y-6">
                 <section className="grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
-                  <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-8 shadow-glow-lg backdrop-blur-sm">
+                  <div className="rounded-[2.5rem] border border-white/10 bg-cyberPanel/95 p-8 shadow-glow-lg backdrop-blur-sm">
                     <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Your stage awaits</p>
                     <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-tightest text-white sm:text-5xl">Become anyone. Star in everything.</h1>
                     <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Craft your boundless avatar into cinematic scenes with real-world experiences, and share your spotlight with the world.</p>
+                    <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                        <p className="text-3xs uppercase tracking-wider text-cyberGray">Live Creators</p>
+                        <p className="mt-3 text-2xl font-black text-white">8.4k</p>
+                      </div>
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                        <p className="text-3xs uppercase tracking-wider text-cyberGray">Scenes active</p>
+                        <p className="mt-3 text-2xl font-black text-white">24</p>
+                      </div>
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                        <p className="text-3xs uppercase tracking-wider text-cyberGray">Weekly growth</p>
+                        <p className="mt-3 text-2xl font-black text-cyberTeal">+16.8%</p>
+                      </div>
+                    </div>
                     <div className="mt-8 flex flex-wrap gap-3">
                       <button className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Explore Scenes</button>
                       <button className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">Build Your Avatar</button>
@@ -283,11 +330,9 @@ export default function RoleverseDashboard() {
                       <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Filter by Category</p>
                       <div className="flex flex-wrap gap-3">
                         <select value={category} onChange={(event) => setCategory(event.target.value)} className="rounded-2xl border border-white/10 bg-cyberBlack/20 px-4 py-3 text-sm text-white outline-none">
-                          <option>All Categories</option>
-                          <option>Action Movie</option>
-                          <option>AI Original</option>
-                          <option>Musical/Dance</option>
-                          <option>Fashion Show</option>
+                          {SCENE_CATEGORIES.map((option) => (
+                            <option key={option} value={option}>{option}</option>
+                          ))}
                         </select>
                         <input
                           value={searchFilter}
@@ -302,24 +347,30 @@ export default function RoleverseDashboard() {
                 </section>
 
                 <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {filteredScenes.map((scene) => (
-                    <div key={scene.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm">
-                      <img src={scene.image} alt={scene.title} className="h-48 w-full object-cover" />
-                      <div className="p-5">
-                        <div className="flex items-center gap-2">
-                          <span className="rounded-full bg-cyberYellow/10 px-2 py-1 text-2xs font-black uppercase tracking-wider text-cyberYellow">{scene.category}</span>
-                          <span className="rounded-full bg-white/5 px-2 py-1 text-2xs font-black uppercase tracking-wider text-white/80">Merch</span>
+                  {filteredScenes.length > 0 ? (
+                    filteredScenes.map((scene) => (
+                      <div key={scene.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm">
+                        <img src={scene.image} alt={scene.title} className="h-48 w-full object-cover" />
+                        <div className="p-5">
+                          <div className="flex items-center gap-2">
+                            <span className="rounded-full bg-cyberYellow/10 px-2 py-1 text-2xs font-black uppercase tracking-wider text-cyberYellow">{scene.category}</span>
+                            <span className="rounded-full bg-white/5 px-2 py-1 text-2xs font-black uppercase tracking-wider text-white/80">Merch</span>
+                          </div>
+                          <h3 className="mt-4 text-lg font-black text-white">{scene.title}</h3>
+                          <p className="mt-3 text-sm leading-6 text-cyberGray">{scene.desc}</p>
+                          <div className="mt-5 flex items-center justify-between text-3xs uppercase tracking-wide text-cyberGrayMuted">
+                            <span>{scene.roles}</span>
+                            <span>{scene.views}</span>
+                          </div>
+                          <button className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-cyberPurple px-4 py-3 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">Cast Into Scene</button>
                         </div>
-                        <h3 className="mt-4 text-lg font-black text-white">{scene.title}</h3>
-                        <p className="mt-3 text-sm leading-6 text-cyberGray">{scene.desc}</p>
-                        <div className="mt-5 flex items-center justify-between text-3xs uppercase tracking-wide text-cyberGrayMuted">
-                          <span>{scene.roles}</span>
-                          <span>{scene.views}</span>
-                        </div>
-                        <button className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-cyberPurple px-4 py-3 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">Cast Into Scene</button>
                       </div>
+                    ))
+                  ) : (
+                    <div className="col-span-full rounded-4xl border border-white/10 bg-white/5 p-8 text-center text-sm text-cyberGray">
+                      No scenes match your filter yet. Try another keyword or category.
                     </div>
-                  ))}
+                  )}
                 </section>
               </div>
             )}
