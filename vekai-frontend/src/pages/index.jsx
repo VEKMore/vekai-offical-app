@@ -75,12 +75,12 @@ export default function RoleverseDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-white">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#07080f]/95 px-4 py-4 backdrop-blur-sm sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-cyberBlack text-cyberWhite font-sans">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-cyberSurface/95 px-4 py-4 backdrop-blur-sm sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-[1480px] items-center justify-between gap-4">
           <div className="flex items-center gap-8">
-            <span className="text-sm font-black uppercase tracking-[0.35em] text-white/90">ROLEVERSE</span>
-            <nav className="hidden items-center gap-5 text-[11px] font-black uppercase tracking-[0.25em] text-gray-400 md:flex">
+            <span className="text-sm font-black uppercase tracking-mega-xl text-white/90">ROLEVERSE</span>
+            <nav className="hidden items-center gap-5 text-3xs font-black uppercase tracking-wider text-cyberGray md:flex">
               {TOP_NAV.map((item) => (
                 <button
                   key={item.key}
@@ -92,7 +92,7 @@ export default function RoleverseDashboard() {
               ))}
             </nav>
           </div>
-          <button className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:border-white/20 hover:bg-white/10">
+          <button className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10">
             Log Out
           </button>
         </div>
@@ -100,14 +100,14 @@ export default function RoleverseDashboard() {
 
       <div className="pt-24">
         <div className="mx-auto flex w-full max-w-[1480px] gap-6 px-4 pb-12 sm:px-6 lg:px-8">
-          <aside className="hidden w-80 shrink-0 flex-col gap-6 rounded-3xl border border-white/10 bg-[#0b0d16]/95 p-6 shadow-[0_30px_80px_-60px_rgba(0,0,0,0.8)] md:flex">
+          <aside className="hidden w-80 shrink-0 flex-col gap-6 rounded-3xl border border-white/10 bg-cyberSurface/95 p-6 shadow-glow-md md:flex">
             <div className="space-y-6">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-[#00ffcc] text-base font-black text-[#0b0d16]">A</div>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyberPurple to-cyberTeal text-base font-black text-cyberSurface">A</div>
                   <div>
-                    <p className="text-sm font-black uppercase tracking-[0.3em] text-white">testuser@example.com</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.3em] text-gray-500">Creator</p>
+                    <p className="text-sm font-black uppercase tracking-mega text-white">testuser@example.com</p>
+                    <p className="mt-1 text-xs uppercase tracking-mega text-cyberGrayMuted">Creator</p>
                   </div>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default function RoleverseDashboard() {
                   <button
                     key={item.key}
                     onClick={() => setActiveTab(item.key)}
-                    className={`w-full rounded-2xl px-4 py-3 text-left text-sm font-black uppercase tracking-[0.2em] transition ${activeTab === item.key ? 'bg-[#1a1d2e] text-[#00ffcc]' : 'bg-white/5 text-gray-300 hover:bg-white/10'}`}
+                    className={`w-full rounded-2xl px-4 py-3 text-left text-sm font-black uppercase tracking-wide transition ${activeTab === item.key ? 'bg-cyberPanelShade text-cyberTeal' : 'bg-white/5 text-cyberGrayMuted hover:bg-white/10'}`}
                   >
                     {item.label}
                   </button>
@@ -125,15 +125,15 @@ export default function RoleverseDashboard() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-[#7b3fff]/70 to-[#00ffcc]/20 p-5 text-white shadow-lg shadow-[#00ffcc]/10">
-              <p className="text-[11px] font-black uppercase tracking-[0.35em] text-white/80">STEAL THE SPOTLIGHT</p>
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-cyberPurple/70 to-cyberTeal/20 p-5 text-white shadow-lg shadow-cyberTeal/10">
+              <p className="text-3xs font-black uppercase tracking-mega-xl text-white/80">STEAL THE SPOTLIGHT</p>
               <p className="mt-3 text-sm leading-6 text-white/90">Cast yourself into a new scene and climb today’s leaderboard.</p>
-              <button onClick={() => setActiveTab('explore')} className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-[#0b0d16] px-4 py-3 text-sm font-black uppercase tracking-[0.22em] text-white transition hover:bg-white/10">
+              <button onClick={() => setActiveTab('explore')} className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-cyberSurface px-4 py-3 text-sm font-black uppercase tracking-wide-md text-white transition hover:bg-white/10">
                 Cast a Scene
               </button>
             </div>
 
-            <div className="space-y-2 text-xs uppercase tracking-[0.35em] text-gray-500">
+            <div className="space-y-2 text-xs uppercase tracking-mega-xl text-cyberGrayMuted">
               <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Community Hub</div>
               <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Account Settings</div>
             </div>
@@ -143,36 +143,36 @@ export default function RoleverseDashboard() {
             {activeTab === 'home' && (
               <div className="space-y-6">
                 <section className="grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
-                  <div className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-8 shadow-[0_40px_120px_-80px_rgba(0,0,0,0.8)] backdrop-blur-sm">
-                    <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Your stage awaits</p>
-                    <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-[-0.03em] text-white sm:text-5xl">Become anyone. Star in everything.</h1>
-                    <p className="mt-5 max-w-2xl text-sm leading-7 text-gray-400">Craft your boundless avatar into cinematic scenes with real-world experiences, and share your spotlight with the world.</p>
+                  <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-8 shadow-glow-lg backdrop-blur-sm">
+                    <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Your stage awaits</p>
+                    <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-tightest text-white sm:text-5xl">Become anyone. Star in everything.</h1>
+                    <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Craft your boundless avatar into cinematic scenes with real-world experiences, and share your spotlight with the world.</p>
                     <div className="mt-8 flex flex-wrap gap-3">
-                      <button className="rounded-2xl bg-[#7b3fff] px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">Explore Scenes</button>
-                      <button className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10">Build Your Avatar</button>
+                      <button className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Explore Scenes</button>
+                      <button className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">Build Your Avatar</button>
                     </div>
                   </div>
 
                   <div className="space-y-6">
-                    <div className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                    <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                       <div className="flex items-center justify-between gap-4">
                         <div>
-                          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Campaign Challenges</p>
+                          <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Campaign Challenges</p>
                           <h2 className="mt-3 text-lg font-black text-white">Live Leaderboard</h2>
                         </div>
-                        <span className="rounded-full bg-white/5 px-3 py-2 text-[10px] uppercase tracking-[0.25em] text-gray-300">Top 3</span>
+                        <span className="rounded-full bg-white/5 px-3 py-2 text-2xs uppercase tracking-wider text-cyberGrayMuted">Top 3</span>
                       </div>
                       <div className="mt-6 space-y-3">
                         {LEADERBOARD_ITEMS.map((item) => (
                           <div key={item.rank} className="rounded-3xl border border-white/5 bg-white/5 p-4">
                             <div className="flex items-center justify-between gap-3">
                               <div>
-                                <p className="text-[10px] uppercase tracking-[0.25em] text-gray-500">#{item.rank}</p>
+                                <p className="text-2xs uppercase tracking-wider text-cyberGrayMuted">#{item.rank}</p>
                                 <p className="mt-2 text-sm font-black text-white">{item.name}</p>
                               </div>
                               <div className="text-right">
-                                <p className="text-sm font-black text-[#00ffcc]">{item.score}</p>
-                                <p className="mt-1 text-xs text-gray-400">{item.change}</p>
+                                <p className="text-sm font-black text-cyberTeal">{item.score}</p>
+                                <p className="mt-1 text-xs text-cyberGray">{item.change}</p>
                               </div>
                             </div>
                           </div>
@@ -180,22 +180,22 @@ export default function RoleverseDashboard() {
                       </div>
                     </div>
 
-                    <div className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                    <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                       <div className="flex items-center justify-between gap-4">
                         <div>
-                          <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Official Community Cuts</p>
+                          <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official Community Cuts</p>
                           <h2 className="mt-3 text-lg font-black text-white">Watch, vote & crown the best cuts</h2>
                         </div>
-                        <button className="rounded-full bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-white/80 transition hover:bg-white/10">View all cuts</button>
+                        <button className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">View all cuts</button>
                       </div>
                       <div className="mt-6 grid gap-4 sm:grid-cols-2">
                         {CROWN_CUTS.map((item) => (
                           <div key={item.id} className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
                             <img src={item.image} alt={item.title} className="h-36 w-full object-cover" />
                             <div className="p-4">
-                              <span className="inline-flex rounded-full bg-[#ffcc00]/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.25em] text-[#ffcc00]">Official Cut</span>
-                              <h3 className="mt-3 text-sm font-black uppercase tracking-[0.2em] text-white">{item.title}</h3>
-                              <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-400">{item.user}</p>
+                              <span className="inline-flex rounded-full bg-cyberYellow/10 px-3 py-1 text-3xs font-black uppercase tracking-wider text-cyberYellow">Official Cut</span>
+                              <h3 className="mt-3 text-sm font-black uppercase tracking-wide text-white">{item.title}</h3>
+                              <p className="mt-2 text-xs uppercase tracking-wide text-cyberGray">{item.user}</p>
                             </div>
                           </div>
                         ))}
@@ -204,54 +204,54 @@ export default function RoleverseDashboard() {
                   </div>
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Featured Scenes</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Featured Scenes</p>
                       <h2 className="mt-3 text-xl font-black text-white">Featured drops from the network</h2>
                     </div>
-                    <button className="rounded-full bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-white/80 transition hover:bg-white/10">Browse the library</button>
+                    <button className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">Browse the library</button>
                   </div>
                   <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                     {FEATURED_SCENES.map((scene) => (
-                      <div key={scene.id} className="overflow-hidden rounded-3xl border border-white/10 bg-[#0d1120]">
+                      <div key={scene.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep">
                         <img src={scene.image} alt={scene.title} className="h-48 w-full object-cover" />
                         <div className="p-5">
-                          <span className="inline-flex rounded-full bg-[#7b3fff]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-[#b2a8ff]">{scene.label}</span>
+                          <span className="inline-flex rounded-full bg-cyberPurple/10 px-3 py-1 text-2xs font-black uppercase tracking-mega text-cyberPurpleLight">{scene.label}</span>
                           <h3 className="mt-4 text-lg font-black text-white">{scene.title}</h3>
-                          <div className="mt-4 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                          <div className="mt-4 flex items-center justify-between text-3xs uppercase tracking-wide text-cyberGray">
                             <span>{scene.role}</span>
                             <span>{scene.views} views</span>
                           </div>
-                          <button className="mt-5 inline-flex items-center justify-center rounded-2xl bg-[#7b3fff] px-4 py-3 text-[10px] font-black uppercase tracking-[0.22em] text-white transition hover:bg-[#9562ff]">Cast Into Scene</button>
+                          <button className="mt-5 inline-flex items-center justify-center rounded-2xl bg-cyberPurple px-4 py-3 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">Cast Into Scene</button>
                         </div>
                       </div>
                     ))}
                   </div>
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Trending Creations</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending Creations</p>
                       <h2 className="mt-3 text-xl font-black text-white">Your generated video experiences</h2>
                     </div>
-                    <button className="rounded-full bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-white/80 transition hover:bg-white/10">Follow</button>
+                    <button className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">Follow</button>
                   </div>
                   <div className="mt-6 space-y-4">
                     {TRENDING_FEED.map((item) => (
                       <div key={item.id} className="rounded-3xl border border-white/10 bg-white/5 p-5">
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                           <p className="text-sm text-gray-200">{item.text}</p>
-                          <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                          <div className="flex items-center gap-4 text-3xs uppercase tracking-wide text-cyberGray">
                             <span>♥ {item.likes}</span>
                             <span>↻ {item.shares}</span>
                           </div>
                         </div>
                         <div className="mt-4 flex flex-wrap gap-3">
-                          <button className="rounded-2xl bg-[#7b3fff] px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">Share</button>
-                          <button className="rounded-2xl border border-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/80 transition hover:border-white/30">Edit</button>
-                          <button className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-red-300 transition hover:bg-red-500/20">Delete</button>
+                          <button className="rounded-2xl bg-cyberPurple px-4 py-2 text-2xs font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Share</button>
+                          <button className="rounded-2xl border border-white/10 px-4 py-2 text-2xs font-black uppercase tracking-wide text-white/80 transition hover:border-white/30">Edit</button>
+                          <button className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-2 text-2xs font-black uppercase tracking-wide text-red-300 transition hover:bg-red-500/20">Delete</button>
                         </div>
                       </div>
                     ))}
@@ -263,26 +263,26 @@ export default function RoleverseDashboard() {
             {activeTab === 'explore' && (
               <div className="space-y-6">
                 <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-                  <div className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-8 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
-                    <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Scene Library</p>
-                    <h2 className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">Step into any story</h2>
-                    <p className="mt-5 max-w-2xl text-sm leading-7 text-gray-400">Browse cinematic scenes, pick your role, and cast your avatar into the spotlight. Or dream up something entirely new with the AI Scene Generator.</p>
+                  <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-8 shadow-glow">
+                    <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Scene Library</p>
+                    <h2 className="mt-4 text-4xl font-black tracking-tightest text-white sm:text-5xl">Step into any story</h2>
+                    <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Browse cinematic scenes, pick your role, and cast your avatar into the spotlight. Or dream up something entirely new with the AI Scene Generator.</p>
                     <div className="mt-8 flex flex-wrap gap-3">
-                      <button className="rounded-2xl bg-[#7b3fff] px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">Create New Scene</button>
-                      <button className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10">Upload Scene</button>
+                      <button className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Create New Scene</button>
+                      <button className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">Upload Scene</button>
                     </div>
                   </div>
-                  <div className="overflow-hidden rounded-[32px] border border-white/10 bg-[#10131f]/95 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                  <div className="overflow-hidden rounded-4xl border border-white/10 bg-cyberPanel/95 shadow-glow">
                     <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=80" alt="Scene banner" className="h-full min-h-[260px] w-full object-cover" />
                   </div>
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="space-y-2">
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Filter by Category</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Filter by Category</p>
                       <div className="flex flex-wrap gap-3">
-                        <select value={category} onChange={(event) => setCategory(event.target.value)} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none">
+                        <select value={category} onChange={(event) => setCategory(event.target.value)} className="rounded-2xl border border-white/10 bg-cyberBlack/20 px-4 py-3 text-sm text-white outline-none">
                           <option>All Categories</option>
                           <option>Action Movie</option>
                           <option>AI Original</option>
@@ -293,30 +293,30 @@ export default function RoleverseDashboard() {
                           value={searchFilter}
                           onChange={(event) => setSearchFilter(event.target.value)}
                           placeholder="Search by scene..."
-                          className="min-w-[240px] rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none"
+                          className="min-w-[240px] rounded-2xl border border-white/10 bg-cyberBlack/20 px-4 py-3 text-sm text-white outline-none"
                         />
                       </div>
                     </div>
-                    <button className="rounded-2xl bg-[#7b3fff] px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">Apply Filters</button>
+                    <button className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Apply Filters</button>
                   </div>
                 </section>
 
                 <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {filteredScenes.map((scene) => (
-                    <div key={scene.id} className="overflow-hidden rounded-3xl border border-white/10 bg-[#0d1120] shadow-[0_20px_60px_-50px_rgba(0,0,0,0.8)]">
+                    <div key={scene.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm">
                       <img src={scene.image} alt={scene.title} className="h-48 w-full object-cover" />
                       <div className="p-5">
                         <div className="flex items-center gap-2">
-                          <span className="rounded-full bg-[#ffcc00]/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#ffcc00]">{scene.category}</span>
-                          <span className="rounded-full bg-white/5 px-2 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-white/80">Merch</span>
+                          <span className="rounded-full bg-cyberYellow/10 px-2 py-1 text-2xs font-black uppercase tracking-wider text-cyberYellow">{scene.category}</span>
+                          <span className="rounded-full bg-white/5 px-2 py-1 text-2xs font-black uppercase tracking-wider text-white/80">Merch</span>
                         </div>
                         <h3 className="mt-4 text-lg font-black text-white">{scene.title}</h3>
-                        <p className="mt-3 text-sm leading-6 text-gray-400">{scene.desc}</p>
-                        <div className="mt-5 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-gray-500">
+                        <p className="mt-3 text-sm leading-6 text-cyberGray">{scene.desc}</p>
+                        <div className="mt-5 flex items-center justify-between text-3xs uppercase tracking-wide text-cyberGrayMuted">
                           <span>{scene.roles}</span>
                           <span>{scene.views}</span>
                         </div>
-                        <button className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-[#7b3fff] px-4 py-3 text-[10px] font-black uppercase tracking-[0.22em] text-white transition hover:bg-[#9562ff]">Cast Into Scene</button>
+                        <button className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-cyberPurple px-4 py-3 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">Cast Into Scene</button>
                       </div>
                     </div>
                   ))}
@@ -326,14 +326,14 @@ export default function RoleverseDashboard() {
 
             {activeTab === 'community' && (
               <div className="space-y-6">
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-8 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
-                  <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Community Stage</p>
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-8 shadow-glow">
+                  <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Community Stage</p>
                   <div className="mt-4 flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
                     <div className="max-w-2xl">
-                      <h2 className="text-4xl font-black tracking-[-0.03em] text-white">Watch, vote & crown the best cuts</h2>
-                      <p className="mt-4 text-sm leading-7 text-gray-400">Step into the spotlight. Vote for your favorite creator submissions and help crown each scene’s Official Community Cut.</p>
+                      <h2 className="text-4xl font-black tracking-tightest text-white">Watch, vote & crown the best cuts</h2>
+                      <p className="mt-4 text-sm leading-7 text-cyberGray">Step into the spotlight. Vote for your favorite creator submissions and help crown each scene’s Official Community Cut.</p>
                     </div>
-                    <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0d1120] shadow-[0_20px_60px_-50px_rgba(0,0,0,0.8)]">
+                    <div className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm">
                       <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80" alt="Community stage" className="h-56 w-full object-cover sm:h-64" />
                     </div>
                   </div>
@@ -341,36 +341,36 @@ export default function RoleverseDashboard() {
 
                 <section className="grid gap-6 md:grid-cols-2">
                   {CROWN_CUTS.map((cut) => (
-                    <div key={cut.id} className="overflow-hidden rounded-3xl border border-white/10 bg-[#0d1120] shadow-[0_20px_60px_-50px_rgba(0,0,0,0.8)]">
+                    <div key={cut.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm">
                       <img src={cut.image} alt={cut.title} className="h-64 w-full object-cover" />
                       <div className="p-5">
-                        <div className="inline-flex rounded-full bg-[#ffcc00]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-[#ffcc00]">Official Cut</div>
+                        <div className="inline-flex rounded-full bg-cyberYellow/10 px-3 py-1 text-2xs font-black uppercase tracking-wider text-cyberYellow">Official Cut</div>
                         <h3 className="mt-4 text-lg font-black text-white">{cut.title}</h3>
-                        <p className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500">{cut.user}</p>
+                        <p className="mt-2 text-xs uppercase tracking-wide text-cyberGrayMuted">{cut.user}</p>
                       </div>
                     </div>
                   ))}
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Active Polls</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Active Polls</p>
                       <h2 className="mt-3 text-xl font-black text-white">Cast your vote before time runs out</h2>
                     </div>
-                    <span className="rounded-full bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-gray-300">Live</span>
+                    <span className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-cyberGrayMuted">Live</span>
                   </div>
                   <div className="mt-6 space-y-4">
                     {TRENDING_FEED.map((item) => (
                       <div key={item.id} className="rounded-3xl border border-white/10 bg-white/5 p-5">
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                           <p className="text-sm text-gray-200">{item.text}</p>
-                          <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                          <div className="flex items-center gap-4 text-3xs uppercase tracking-wide text-cyberGray">
                             <span>{item.likes} votes</span>
                             <span>{item.shares} comments</span>
                           </div>
                         </div>
-                        <button className="mt-4 rounded-2xl bg-[#7b3fff] px-4 py-3 text-[10px] font-black uppercase tracking-[0.22em] text-white transition hover:bg-[#9562ff]">Vote now</button>
+                        <button className="mt-4 rounded-2xl bg-cyberPurple px-4 py-3 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">Vote now</button>
                       </div>
                     ))}
                   </div>
@@ -380,14 +380,14 @@ export default function RoleverseDashboard() {
 
             {activeTab === 'campaigns' && (
               <div className="space-y-6">
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-8 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-8 shadow-glow">
                   <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Campaign Exclusive Drop</p>
-                      <h2 className="mt-4 text-4xl font-black tracking-[-0.03em] text-white">Be the lead — limited collection</h2>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Campaign Exclusive Drop</p>
+                      <h2 className="mt-4 text-4xl font-black tracking-tightest text-white">Be the lead — limited collection</h2>
                     </div>
-                    <div className="space-y-2 rounded-3xl bg-[#0d1120] p-5 shadow-[0_20px_60px_-50px_rgba(0,0,0,0.8)]">
-                      <p className="text-xs uppercase tracking-[0.25em] text-gray-400">Drops ends in</p>
+                    <div className="space-y-2 rounded-3xl bg-cyberPanelDeep p-5 shadow-glow-sm">
+                      <p className="text-xs uppercase tracking-wider text-cyberGray">Drops ends in</p>
                       <div className="text-2xl font-black text-white">02:14:39</div>
                     </div>
                   </div>
@@ -395,35 +395,35 @@ export default function RoleverseDashboard() {
 
                 <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {MERCH_ITEMS.slice(0, 3).map((item) => (
-                    <div key={item.id} className="rounded-3xl border border-white/10 bg-[#0d1120] p-6 shadow-[0_20px_60px_-50px_rgba(0,0,0,0.8)]">
-                      <div className="inline-flex rounded-full bg-[#ffcc00]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#ffcc00]">Exclusive</div>
+                    <div key={item.id} className="rounded-3xl border border-white/10 bg-cyberPanelDeep p-6 shadow-glow-sm">
+                      <div className="inline-flex rounded-full bg-cyberYellow/10 px-3 py-1 text-2xs font-black uppercase tracking-wide text-cyberYellow">Exclusive</div>
                       <h3 className="mt-4 text-lg font-black text-white">{item.title}</h3>
-                      <p className="mt-4 text-sm text-gray-400">{item.category}</p>
+                      <p className="mt-4 text-sm text-cyberGray">{item.category}</p>
                       <div className="mt-5 flex items-center justify-between gap-4">
                         <span className="text-lg font-black text-white">{item.price}</span>
-                        <button className="rounded-2xl bg-[#7b3fff] px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-white transition hover:bg-[#9562ff]">View Item</button>
+                        <button className="rounded-2xl bg-cyberPurple px-4 py-2 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">View Item</button>
                       </div>
                     </div>
                   ))}
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Browse all merchandise</p>
-                      <p className="mt-2 text-sm text-gray-400">Shop merch tied to the scenes and community cuts you love.</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Browse all merchandise</p>
+                      <p className="mt-2 text-sm text-cyberGray">Shop merch tied to the scenes and community cuts you love.</p>
                     </div>
-                    <button className="rounded-2xl bg-[#7b3fff] px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">Browse catalog</button>
+                    <button className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Browse catalog</button>
                   </div>
 
                   <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {MERCH_ITEMS.map((item) => (
-                      <div key={item.id} className="rounded-3xl border border-white/10 bg-[#0d1120] p-5">
-                        <div className="text-[10px] uppercase tracking-[0.25em] text-gray-400">{item.category}</div>
+                      <div key={item.id} className="rounded-3xl border border-white/10 bg-cyberPanelDeep p-5">
+                        <div className="text-2xs uppercase tracking-wider text-cyberGray">{item.category}</div>
                         <h3 className="mt-3 text-sm font-black text-white">{item.title}</h3>
                         <div className="mt-4 flex items-center justify-between gap-4 text-sm font-black text-white">
                           <span>{item.price}</span>
-                          <button className="rounded-full border border-white/10 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10">Details</button>
+                          <button className="rounded-full border border-white/10 px-3 py-2 text-2xs uppercase tracking-wide text-white/80 transition hover:bg-white/10">Details</button>
                         </div>
                       </div>
                     ))}
@@ -434,51 +434,51 @@ export default function RoleverseDashboard() {
 
             {activeTab === 'store' && (
               <div className="space-y-6">
-                <section className="rounded-[32px] border border-white/10 bg-[#7b3fff]/10 p-8 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPurple/10 p-8 shadow-glow">
                   <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#bfb8ff]">The Roleverse Store</p>
-                      <h2 className="mt-4 text-4xl font-black tracking-[-0.03em] text-white">Wear the role. Own the moment.</h2>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberPurpleMuted">The Roleverse Store</p>
+                      <h2 className="mt-4 text-4xl font-black tracking-tightest text-white">Wear the role. Own the moment.</h2>
                       <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80">Shop merch tied to the scenes and community cuts you love.</p>
                     </div>
-                    <button className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#ffcc00] px-8 text-sm font-black uppercase tracking-[0.2em] text-[#0b0d16] transition hover:bg-[#ffe75a]">Add Merchandise</button>
+                    <button className="inline-flex h-14 items-center justify-center rounded-2xl bg-cyberYellow px-8 text-sm font-black uppercase tracking-wide text-cyberSurface transition hover:bg-cyberYellowSoft">Add Merchandise</button>
                   </div>
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Campaign Exclusive Drop</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Campaign Exclusive Drop</p>
                       <h2 className="mt-3 text-xl font-black text-white">Be the lead — limited collection</h2>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">
                       {MERCH_ITEMS.slice(0, 2).map((item) => (
-                        <div key={item.id} className="rounded-3xl border border-white/10 bg-[#0d1120] p-4">
-                          <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400">{item.category}</p>
+                        <div key={item.id} className="rounded-3xl border border-white/10 bg-cyberPanelDeep p-4">
+                          <p className="text-2xs uppercase tracking-wide text-cyberGray">{item.category}</p>
                           <h3 className="mt-2 text-sm font-black text-white">{item.title}</h3>
-                          <p className="mt-4 text-lg font-black text-[#ffcc00]">{item.price}</p>
-                          <button className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-[#7b3fff] px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">View Item</button>
+                          <p className="mt-4 text-lg font-black text-cyberYellow">{item.price}</p>
+                          <button className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-cyberPurple px-3 py-2 text-2xs font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">View Item</button>
                         </div>
                       ))}
                     </div>
                   </div>
                 </section>
 
-                <section className="rounded-[32px] border border-white/10 bg-[#10131f]/95 p-6 shadow-[0_30px_80px_-70px_rgba(0,0,0,0.8)]">
+                <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
                   <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.35em] text-[#8e94a3]">Scene Collections</p>
-                      <p className="mt-2 text-sm text-gray-400">Shop merch tied to this production.</p>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Scene Collections</p>
+                      <p className="mt-2 text-sm text-cyberGray">Shop merch tied to this production.</p>
                     </div>
-                    <button className="rounded-2xl bg-[#7b3fff] px-6 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#9562ff]">View Collection</button>
+                    <button className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">View Collection</button>
                   </div>
 
                   <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {Array.from({ length: 6 }).map((_, index) => (
-                      <div key={index} className="rounded-3xl border border-white/10 bg-[#0d1120] p-5">
+                      <div key={index} className="rounded-3xl border border-white/10 bg-cyberPanelDeep p-5">
                         <div className="h-24 rounded-2xl bg-white/5" />
-                        <p className="mt-4 text-sm font-black uppercase tracking-[0.2em] text-white">Shop merch tied to this production</p>
-                        <button className="mt-5 rounded-full border border-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/80 transition hover:bg-white/10">View Collection</button>
+                        <p className="mt-4 text-sm font-black uppercase tracking-wide text-white">Shop merch tied to this production</p>
+                        <button className="mt-5 rounded-full border border-white/10 px-4 py-2 text-2xs font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">View Collection</button>
                       </div>
                     ))}
                   </div>
