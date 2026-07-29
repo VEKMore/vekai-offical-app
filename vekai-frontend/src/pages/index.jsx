@@ -10,20 +10,15 @@ const LEADERBOARD_ITEMS = [
 ];
 
 const CROWN_WINNERS = [
-  { id: 'cw1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', creator: '@Alpha_Valkyrie', img: 'https://unsplash.com' },
-  { id: 'cw2', title: 'GROOVE ODYSSEY: NEON STAGE', creator: '@Cyber_Ronin_X', img: 'https://unsplash.com' }
+  { id: 'cw1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', creator: '@Alpha_Valkyrie', img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80' },
+  { id: 'cw2', title: 'GROOVE ODYSSEY: NEON STAGE', creator: '@Cyber_Ronin_X', img: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80' }
 ];
 
 const GENERAL_SCENES = [
-  { id: 'gs1', tag: 'Action Movie', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', desc: 'A high-octane action movie scene set in a dystopian city, featuring explosive stunts and hero-villain face-offs.', roles: '2 roles', views: '96.4K views', img: 'https://unsplash.com', color: 'bg-red-500/10 text-red-400 border-red-500/20' },
-  { id: 'gs2', tag: 'AI Original', title: 'ORIGEN: AI DREAMSCAPE', desc: 'A fully AI-original high-concept dreamscape with surreal visuals and narrative arcs.', roles: '0 roles', views: '11.5K views', img: 'https://unsplash.com', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
-  { id: 'gs3', tag: 'Musical/Dance', title: 'GROOVE ODYSSEY: NEON STAGE', desc: 'A vibrant musical dance scene bursting with neon lights and rhythm.', roles: '1 role', views: '51.2K views', img: 'https://unsplash.com', color: 'bg-pink-500/10 text-pink-400 border-pink-500/20' },
-  { id: 'gs4', tag: 'Fashion Show', title: 'VELVET RUNWAY: SEASON ZERO', desc: 'A glamorous fashion show runway scene submitted by a community creator.', roles: '0 roles', views: '46.7K views', img: 'https://unsplash.com', color: 'bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20' },
-  { id: 'gs5', tag: 'News Broadcast', title: 'BREAKING NOW: STUDIO 7 LIVE', desc: 'A live-style news broadcast scene with an AI anchor delivering breaking news.', roles: '1 role', views: '51.0K views', img: 'https://unsplash.com', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
-  { id: 'gs6', tag: 'TV Drama', title: 'WHISPERS IN THE WARD', desc: 'An emotional TV drama unfolding in a hospital ward, with complex character dynamics.', roles: '2 roles', views: '43.5K views', img: 'https://unsplash.com', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' },
-  { id: 'gs7', tag: 'Sports Event', title: 'CHAMPIONSHIP CLASH: FINAL QUARTER', desc: 'An intense sports event scene capturing the final moments of a championship game.', roles: '0 roles', views: '16.2K views', img: 'https://unsplash.com', color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
-  { id: 'gs8', tag: 'Virtual Comic', title: 'PANEL 42: THE AWAKENING', desc: 'A virtual comic-style scene exploring a superhero origin story, AI-generated.', roles: '0 roles', views: '39.8K views', img: 'https://unsplash.com', color: 'bg-teal-500/10 text-teal-400 border-teal-500/20' },
-  { id: 'gs9', tag: 'Circus Art', title: 'MIDNIGHT CARNIVAL SPECTACULAR', desc: 'A whimsical circus and performance art scene full of acrobatics and color.', roles: '1 role', views: '12.9K views', img: 'https://unsplash.com', color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' }
+  { id: 'gs1', tag: 'Action Movie', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', desc: 'A high-octane action movie scene set in a dystopian city, featuring explosive stunts and hero-villain face-offs.', roles: '2 roles', views: '96.4K views', img: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80', color: 'bg-red-500/10 text-red-400 border-red-500/20' },
+  { id: 'gs2', tag: 'AI Original', title: 'ORIGEN: AI DREAMSCAPE', desc: 'A fully AI-original high-concept dreamscape with surreal visuals and narrative arcs.', roles: '0 roles', views: '11.5K views', img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80', color: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+  { id: 'gs3', tag: 'Musical/Dance', title: 'GROOVE ODYSSEY: NEON STAGE', desc: 'A vibrant musical dance scene bursting with neon lights and rhythm.', roles: '1 role', views: '51.2K views', img: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', color: 'bg-pink-500/10 text-pink-400 border-pink-500/20' },
+  { id: 'gs4', tag: 'Fashion Show', title: 'VELVET RUNWAY: SEASON ZERO', desc: 'A glamorous fashion show runway scene submitted by a community creator.', roles: '0 roles', views: '46.7K views', img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80', color: 'bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20' }
 ];
 
 const FEED_STREAMS = [
@@ -33,56 +28,196 @@ const FEED_STREAMS = [
 ];
 
 export default function PerfectDesignEngine() {
-  const [activeTab, setActiveTab] = useState('home'); 
+  const [activeTab, setActiveTab] = useState('home');
   const [searchFilter, setSearchFilter] = useState('');
 
-  const displayedScenes = GENERAL_SCENES.filter(scene => 
-    scene.title.toLowerCase().includes(searchFilter.toLowerCase()) || 
-    scene.tag.toLowerCase().includes(searchFilter.toLowerCase())
-  );
+  const displayedScenes = GENERAL_SCENES.filter((scene) => {
+    const query = searchFilter.toLowerCase();
+    return scene.title.toLowerCase().includes(query) || scene.tag.toLowerCase().includes(query);
+  });
 
   return (
-    <div className="w-full min-h-screen bg-[#0e0e12] text-[#f5f5f7] font-sans flex flex-col antialiased select-none">
-      
-      {/* 🌐 HORIZONTAL APEX APP HEAD TRACK BAR */}
-      <header className="w-full h-16 bg-[#070709] border-b border-white/5 px-8 flex justify-between items-center shrink-0 z-50 fixed top-0 left-0 right-0">
-        <div className="flex items-center gap-10">
+    <div className="min-h-screen bg-[#0e0e12] text-[#f5f5f7] font-sans">
+      <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between border-b border-white/5 bg-[#070709] px-6 md:px-8">
+        <div className="flex items-center gap-6">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-600 to-[#00ffcc] flex items-center justify-center text-black font-black text-[10px]">R</div>
-            <span className="font-sans font-black text-xs tracking-[0.25em] text-white">ROLEVERSE</span>
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-tr from-purple-600 to-[#00ffcc] text-[10px] font-black text-black">R</div>
+            <span className="text-xs font-black tracking-[0.25em] text-white">ROLEVERSE</span>
           </div>
-          <nav className="flex items-center gap-8 text-[11px] font-black tracking-widest uppercase text-gray-400">
-            <button onClick={() => setActiveTab('home')} className={`transition-colors cursor-pointer outline-none bg-transparent border-0 ${activeTab === 'home' ? 'text-white border-b-2 border-purple-500 pb-5 pt-5 mt-0.5' : 'hover:text-white'}`}>Home</button>
-            <button onClick={() => setActiveTab('explore')} className={`transition-colors cursor-pointer outline-none bg-transparent border-0 ${activeTab === 'explore' ? 'text-white border-b-2 border-purple-500 pb-5 pt-5 mt-0.5' : 'hover:text-white'}`}>Explore</button>
-            <button onClick={() => setActiveTab('community')} className={`transition-colors cursor-pointer outline-none bg-transparent border-0 ${activeTab === 'community' ? 'text-white border-b-2 border-purple-500 pb-5 pt-5 mt-0.5' : 'hover:text-white'}`}>Community</button>
-            <button className="hover:text-white transition-colors cursor-pointer bg-transparent border-0 outline-none opacity-40">Campaigns</button>
-            <button className="hover:text-white transition-colors cursor-pointer bg-transparent border-0 outline-none opacity-40">Store</button>
+          <nav className="hidden items-center gap-6 text-[11px] font-black uppercase tracking-widest text-gray-400 md:flex">
+            <button onClick={() => setActiveTab('home')} className={`bg-transparent outline-none transition-colors ${activeTab === 'home' ? 'border-b-2 border-purple-500 pb-5 pt-5 text-white' : 'hover:text-white'}`}>Home</button>
+            <button onClick={() => setActiveTab('explore')} className={`bg-transparent outline-none transition-colors ${activeTab === 'explore' ? 'border-b-2 border-purple-500 pb-5 pt-5 text-white' : 'hover:text-white'}`}>Explore</button>
+            <button onClick={() => setActiveTab('community')} className={`bg-transparent outline-none transition-colors ${activeTab === 'community' ? 'border-b-2 border-purple-500 pb-5 pt-5 text-white' : 'hover:text-white'}`}>Community</button>
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <span className="font-mono text-[10px] text-gray-500 tracking-wider hidden sm:block">SYSTEM NODE SECURE // ONLINE</span>
-          <div className="w-1.5 h-1.5 rounded-full bg-[#00ffcc]" />
+          <span className="hidden text-[10px] font-mono tracking-wider text-gray-500 sm:block">SYSTEM NODE SECURE // ONLINE</span>
+          <div className="h-1.5 w-1.5 rounded-full bg-[#00ffcc]" />
         </div>
       </header>
 
-      {/* BASE WRAPPER FOR UNDER-HEADER LAYOUT SPLIT CONTAINER */}
-      <div className="w-full flex flex-1 pt-16 overflow-hidden">
-        
-        {/* 🧭 LEFT SIDE NAVIGATION COLUMN DECK */}
-        <aside className="w-64 bg-[#070709] border-r border-white/5 p-6 flex flex-col justify-between shrink-0 hidden md:flex min-h-[calc(100vh-64px)]">
+      <div className="flex min-h-screen pt-16">
+        <aside className="hidden min-h-[calc(100vh-64px)] w-64 shrink-0 flex-col justify-between border-r border-white/5 bg-[#070709] p-6 md:flex">
           <div className="flex flex-col gap-6">
-            <div className="bg-white/[0.01] border border-white/5 p-4 rounded-xl flex items-center gap-3">
-              <div className="w-7 h-7 rounded-full bg-neutral-800 border border-white/10 flex items-center justify-center text-xs">👤</div>
+            <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.01] p-4">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-neutral-800 text-xs">👤</div>
               <div className="flex flex-col overflow-hidden">
-                <span className="text-[11px] text-white font-black truncate">testuser@example.com</span>
-                <span className="text-[9px] text-gray-500 font-black tracking-wider uppercase mt-0.5">Creator Workspace</span>
+                <span className="truncate text-[11px] font-black text-white">testuser@example.com</span>
+                <span className="mt-0.5 text-[9px] font-black uppercase tracking-wider text-gray-500">Creator Workspace</span>
               </div>
             </div>
 
-            <div className="text-[9px] text-gray-500 font-black tracking-widest uppercase px-1">Navigation Hub</div>
-            <nav className="flex flex-col gap-1 text-xs font-black text-gray-400 uppercase tracking-wider">
-              <button onClick={() => setActiveTab('home')} className={`text-left px-3 py-2.5 rounded-md transition-all cursor-pointer border-0 outline-none ${activeTab === 'home' ? 'bg-[#9d4edd]/10 text-[#00ffcc] border-l-2 border-[#00ffcc]' : 'bg-transparent hover:bg-white/5'}`}>▪ My Feed Dashboard</button>
-              <button onClick={() => setActiveTab('explore')} className={`text-left px-3 py-2.5 rounded-md transition-all cursor-pointer border-0 outline-none ${activeTab === 'explore' ? 'bg-[#9d4edd]/10 text-[#00ffcc] border-l-2 border-[#00ffcc]' : 'bg-transparent hover:bg-white/5'}`}>▫ Explore Library</button>
-              <button onClick={() => setActiveTab('community')} className={`text-left px-3 py-2.5 rounded-md transition-all cursor-pointer border-0 outline-none ${activeTab === 'community' ? 'bg-[#9d4edd]/10 text-[#00ffcc] border-l-2 border-[#00ffcc]' : 'bg-transparent hover:bg-white/5'}`}>▫ Stage Elections</button>
+            <div className="px-1 text-[9px] font-black uppercase tracking-widest text-gray-500">Navigation Hub</div>
+            <nav className="flex flex-col gap-1 text-xs font-black uppercase tracking-wider text-gray-400">
+              <button onClick={() => setActiveTab('home')} className={`rounded-md border-0 px-3 py-2.5 text-left outline-none transition-all ${activeTab === 'home' ? 'border-l-2 border-[#00ffcc] bg-[#9d4edd]/10 text-[#00ffcc]' : 'bg-transparent hover:bg-white/5'}`}>▪ My Feed Dashboard</button>
+              <button onClick={() => setActiveTab('explore')} className={`rounded-md border-0 px-3 py-2.5 text-left outline-none transition-all ${activeTab === 'explore' ? 'border-l-2 border-[#00ffcc] bg-[#9d4edd]/10 text-[#00ffcc]' : 'bg-transparent hover:bg-white/5'}`}>▫ Explore Library</button>
+              <button onClick={() => setActiveTab('community')} className={`rounded-md border-0 px-3 py-2.5 text-left outline-none transition-all ${activeTab === 'community' ? 'border-l-2 border-[#00ffcc] bg-[#9d4edd]/10 text-[#00ffcc]' : 'bg-transparent hover:bg-white/5'}`}>▫ Stage Elections</button>
             </nav>
-STEAL THE SPOTLIGHTCast your avatar features into premium cinematic scenes live.<button onClick={() => setActiveTab('explore')} className="bg-black/20 hover:bg-black/30 text-white text-[9px] font-black tracking-widest py-2 px-3 rounded-md uppercase transition-colors self-start border-0 outline-none mt-1 cursor-pointer">Cast SceneCommunity HubAccount Configuration{/* 💻 CENTRAL OPERATIONAL VIEWPORT LAYER */}{/* ============================================================== /}{/ VIEW MODE 1: CORE HOME INDEX WORKSPACE BOARD                  /}{/ ============================================================== /}{activeTab === 'home' && ({/ PRIMARY APP PROMOTION HERO BANNER ELEMENT */}{/* LIVE LEADERBOARD TRACK CAMPAIGN ARRAYS MODULES */}{/* LANDSCAPE MEDIA COMMUNITY ARENA ELECTIONS SLOT ROWS */}{/* 4-COLUMN ASYMMETRIC SCENE SHOWCASE PREVIEW SHEETS */}{/* NETWORK CREATOR FEEDS TIMELINE INTERACTION BLOCKS */})}{/* ============================================================== /}{/ VIEW MODE 2: EXPLICIT SCENE SELECTION MATRIX PACK GRID        /}{/ ============================================================== */}{activeTab === 'explore' && ({displayedScenes.map((scene) => (<span className={${scene.color} border font-black text-[8px] tracking-widest px-2 py-0.5 uppercase rounded-sm}>{scene.tag}👑 Merch Linked{scene.title}{scene.desc}👥 Configuration: {scene.roles}👁️ Telemetry: {scene.views}<button onClick={() => alert(Staging credentials loop for film payload context: ${scene.title})} className="w-full bg-purple-600 hover:bg-purple-700 text-white font-black py-2.5 rounded text-[10px] tracking-widest uppercase transition-colors border-0 outline-none cursor-pointer mt-1">Cast Avatar Into Scene))}{displayedScenes.length === 0 && (No active scene templates align with your text search criteria fields.)})}{/* ============================================================== /}{/ VIEW MODE 3: CROWD ARENA CROWN ELECTIONS                      /}{/ ============================================================== */}{activeTab === 'community' && (🔒 Staging arena queues are balanced for this election timeframe. Check active channel alerts for loop updates.);}
+          </div>
+
+          <button onClick={() => setActiveTab('explore')} className="self-start rounded-md border-0 bg-black/20 px-3 py-2 text-[9px] font-black uppercase tracking-widest text-white transition-colors hover:bg-black/30">Cast Scene</button>
+        </aside>
+
+        <main className="flex-1 overflow-auto p-6 md:p-8">
+          {activeTab === 'home' && (
+            <div className="space-y-6">
+              <section className="overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-purple-600/20 via-[#0e0e12] to-[#00ffcc]/10 p-6 md:p-8">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                  <div className="max-w-2xl space-y-4">
+                    <div className="inline-flex items-center rounded-full border border-[#00ffcc]/20 bg-[#00ffcc]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-[#00ffcc]">Live Scene Studio</div>
+                    <h1 className="text-3xl font-black tracking-[0.2em] text-white sm:text-4xl">STEAL THE SPOTLIGHT</h1>
+                    <p className="max-w-xl text-sm leading-7 text-gray-300">Cast your avatar features into premium cinematic scenes live, then publish instantly to the creator feed.</p>
+                  </div>
+                  <button onClick={() => setActiveTab('explore')} className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-white transition-colors hover:bg-white/20">Open Library</button>
+                </div>
+              </section>
+
+              <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+                <div className="rounded-2xl border border-white/10 bg-[#111116] p-5">
+                  <div className="mb-4 flex items-center justify-between">
+                    <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-gray-400">Leaderboard</h2>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#00ffcc]">Weekly Pulse</span>
+                  </div>
+                  <div className="space-y-3">
+                    {LEADERBOARD_ITEMS.map((item) => (
+                      <div key={item.rank} className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00ffcc]/15 text-sm font-black text-[#00ffcc]">#{item.rank}</div>
+                          <div>
+                            <div className="text-sm font-black text-white">{item.name}</div>
+                            <div className="text-[11px] text-gray-500">{item.metrics}</div>
+                          </div>
+                        </div>
+                        <div className="text-sm font-black text-[#00ffcc]">{item.status}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-[#111116] p-5">
+                  <div className="mb-4 flex items-center justify-between">
+                    <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-gray-400">Crown Winners</h2>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-purple-400">Featured</span>
+                  </div>
+                  <div className="space-y-3">
+                    {CROWN_WINNERS.map((winner) => (
+                      <div key={winner.id} className="overflow-hidden rounded-2xl border border-white/5 bg-black/20">
+                        <img src={winner.img} alt={winner.title} className="h-28 w-full object-cover" />
+                        <div className="p-4">
+                          <div className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">Crown</div>
+                          <div className="mt-2 text-sm font-black text-white">{winner.title}</div>
+                          <div className="mt-1 text-[11px] text-gray-500">{winner.creator}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-2xl border border-white/10 bg-[#111116] p-5">
+                <div className="mb-4 flex items-center justify-between">
+                  <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-gray-400">Creator Feed</h2>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#00ffcc]">Synced</span>
+                </div>
+                <div className="space-y-3">
+                  {FEED_STREAMS.map((post) => (
+                    <div key={post.id} className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#9d4edd]/20 text-lg">{post.avatar}</div>
+                        <div>
+                          <div className="text-sm font-black text-white">{post.user || post.id_tag}</div>
+                          <div className="text-[11px] text-gray-500">{post.timestamp}</div>
+                        </div>
+                      </div>
+                      <p className="mt-3 text-sm leading-7 text-gray-300">{post.text}</p>
+                      <div className="mt-3 flex gap-4 text-[11px] uppercase tracking-[0.2em] text-gray-500">
+                        <span>♥ {post.likes}</span>
+                        <span>💬 {post.comments}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
+          )}
+
+          {activeTab === 'explore' && (
+            <div className="space-y-6">
+              <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-[#111116] p-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-gray-400">Explore Library</h2>
+                  <p className="mt-2 text-sm text-gray-300">Search and preview cinematic scene templates.</p>
+                </div>
+                <input
+                  value={searchFilter}
+                  onChange={(event) => setSearchFilter(event.target.value)}
+                  placeholder="Search scenes"
+                  className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm text-white outline-none"
+                />
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {displayedScenes.map((scene) => (
+                  <div key={scene.id} className="overflow-hidden rounded-2xl border border-white/10 bg-[#111116]">
+                    <img src={scene.img} alt={scene.title} className="h-36 w-full object-cover" />
+                    <div className="p-4">
+                      <div className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-black uppercase tracking-[0.3em] ${scene.color}`}>{scene.tag}</div>
+                      <h3 className="mt-3 text-sm font-black text-white">{scene.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-gray-400">{scene.desc}</p>
+                      <div className="mt-4 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-gray-500">
+                        <span>{scene.roles}</span>
+                        <span>{scene.views}</span>
+                      </div>
+                      <button className="mt-4 w-full rounded-lg bg-purple-600 px-3 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-white transition-colors hover:bg-purple-700">Cast Avatar Into Scene</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {displayedScenes.length === 0 && (
+                <div className="rounded-2xl border border-white/10 bg-[#111116] p-6 text-center text-sm text-gray-400">No active scene templates match your current search.</div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'community' && (
+            <div className="rounded-2xl border border-white/10 bg-[#111116] p-6">
+              <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-gray-400">Community Hub</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-300">Join live polls, creator showcases, and world-building challenges from the Roleverse network.</p>
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+                  <div className="text-sm font-black text-white">Account Configuration</div>
+                  <p className="mt-2 text-sm text-gray-400">Tune scene permissions, moderation, and publishing preferences.</p>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+                  <div className="text-sm font-black text-white">Creator Spotlight</div>
+                  <p className="mt-2 text-sm text-gray-400">Highlight your latest scene drops and community reactions.</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </main>
+      </div>
+    </div>
+  );
+}
