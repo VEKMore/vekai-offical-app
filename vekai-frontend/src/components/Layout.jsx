@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -21,6 +21,11 @@ const SIDEBAR_NAV = [
 export default function Layout({ children }) {
   const router = useRouter();
   const activePath = router.pathname;
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [activePath]);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-cyberBlack text-cyberWhite font-sans">
@@ -46,22 +51,38 @@ export default function Layout({ children }) {
               ))}
             </nav>
           </div>
-          <button className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10">
-            Log Out
-          </button>
-        </div>
-        <div aria-label="Mobile primary navigation" className="mx-auto mt-4 flex max-w-[1480px] gap-3 overflow-x-auto pb-2 md:hidden">
-          {TOP_NAV.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className={`rounded-full border px-3 py-2 text-[0.65rem] uppercase tracking-[0.35em] transition ${
-                activePath === item.href ? 'border-cyberTeal bg-cyberTeal/10 text-cyberTeal' : 'border-white/10 bg-white/5 text-cyberGrayMuted hover:border-white/20 hover:bg-white/10 hover:text-white'
-              }`}
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10 md:hidden"
             >
-              {item.label}
-            </Link>
-          ))}
+              {mobileMenuOpen ? 'Close' : 'Menu'}
+            </button>
+            <button className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10">
+              Log Out
+            </button>
+          </div>
+        </div>
+        <div
+          id="mobile-menu"
+          aria-hidden={!mobileMenuOpen}
+          className={`fixed inset-x-0 top-[5.5rem] z-40 overflow-hidden border-b border-white/10 bg-cyberSurface/95 transition-all duration-300 md:hidden ${mobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'}`}
+        >
+          <nav aria-label="Mobile primary navigation" className="mx-auto flex max-w-[1480px] flex-col gap-2 px-4 py-4">
+            {TOP_NAV.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`rounded-2xl px-3 py-3 text-left text-sm uppercase tracking-wide transition ${activePath === item.href ? 'bg-cyberTeal/10 text-cyberTeal' : 'border border-white/10 bg-white/5 text-cyberGrayMuted hover:border-white/20 hover:bg-white/10 hover:text-white'}`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </header>
 

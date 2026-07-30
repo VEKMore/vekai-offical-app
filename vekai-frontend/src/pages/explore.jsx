@@ -1,20 +1,42 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import { SCENE_LIBRARY, SCENE_CATEGORIES } from '../data/siteData';
+import { fetchScenes, fetchCategories } from '../lib/apiClient';
 
 export default function ExplorePage() {
   const [category, setCategory] = useState('All Categories');
   const [query, setQuery] = useState('');
+  const [scenes, setScenes] = useState([]);
+  const [categories, setCategories] = useState(['All Categories']);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    Promise.all([fetchScenes(), fetchCategories()])
+      .then(([fetchedScenes, fetchedCategories]) => {
+        if (!mounted) return;
+        setScenes(fetchedScenes);
+        setCategories(fetchedCategories);
+      })
+      .catch((err) => {
+        console.error('Failed to load site data', err);
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+
+    return () => { mounted = false; };
+  }, []);
 
   const filteredScenes = useMemo(
-    () => SCENE_LIBRARY.filter((scene) => {
+    () => scenes.filter((scene) => {
       const matchesCategory = category === 'All Categories' || scene.category === category;
       const searchText = [scene.title, scene.category, scene.desc].join(' ').toLowerCase();
       const matchesQuery = searchText.includes(query.toLowerCase());
       return matchesCategory && matchesQuery;
     }),
-    [category, query]
+    [scenes, category, query]
   );
 
   return (
@@ -49,7 +71,7 @@ export default function ExplorePage() {
                 onChange={(event) => setCategory(event.target.value)}
                 className="w-full rounded-2xl border border-white/10 bg-cyberBlack/20 px-4 py-3 text-sm text-white outline-none"
               >
-                {SCENE_CATEGORIES.map((option) => (
+                {categories.map((option) => (
                   <option key={option} value={option}>{option}</option>
                 ))}
               </select>
@@ -59,7 +81,7 @@ export default function ExplorePage() {
           <div className="space-y-6">
             <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Available scenes</p>
-              <div className="mt-4 text-sm text-cyberGray">{filteredScenes.length} scenes matching your filters.</div>
+              <div className="mt-4 text-sm text-cyberGray">{loading ? 'Loading...' : `${filteredScenes.length} scenes matching your filters.`}</div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

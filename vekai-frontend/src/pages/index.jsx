@@ -48,9 +48,9 @@ export default function RoleverseDashboard() {
                 <p className="mt-3 text-2xl font-black text-cyberTeal">+16.8%</p>
               </div>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/explore" className="rounded-2xl bg-cyberPurple px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Explore Scenes</Link>
-              <Link href="/community" className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">Join the Community</Link>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/explore" className="w-full rounded-2xl bg-cyberPurple px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft sm:w-auto">Explore Scenes</Link>
+              <Link href="/community" className="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10 sm:w-auto">Join the Community</Link>
             </div>
           </div>
 
