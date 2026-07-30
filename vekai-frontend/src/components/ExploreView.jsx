@@ -99,7 +99,9 @@ export default function ExploreView({ onNavigate }) {
                     </div>
                   </div>
                   <div className="w-full flex gap-2 border-t border-white/5 pt-3">
-                    <button className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-black py-2 rounded-md text-[10px] tracking-widest uppercase transition-colors">Cast Into Scene</button>
+                    <PrimaryButton className="flex-1 text-[10px] tracking-widest rounded-md py-2" variant="primary">
+                      Cast Into Scene
+                    </PrimaryButton>
                   </div>
                 </div>
               ))}

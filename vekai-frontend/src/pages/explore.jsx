@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import PrimaryButton from '../components/PrimaryButton';
 import { fetchScenes, fetchCategories } from '../lib/apiClient';
 
 export default function ExplorePage() {
@@ -49,9 +50,9 @@ export default function ExplorePage() {
               <h1 className="mt-3 text-4xl font-black text-white">Find your next scene, role, or creative collaborator.</h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-cyberGray">Browse curated scenes, filter by category, and jump into the latest role-based challenges across the network.</p>
             </div>
-            <Link href="/campaigns" className="inline-flex h-14 items-center justify-center rounded-2xl bg-cyberPurple px-6 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">
+            <PrimaryButton href="/campaigns" className="h-14 inline-flex px-6" variant="primary">
               View Campaigns
-            </Link>
+            </PrimaryButton>
           </div>
         </section>
 
@@ -97,9 +98,9 @@ export default function ExplorePage() {
                     <p className="mt-3 text-sm leading-6 text-cyberGray">{scene.desc}</p>
                     <div className="mt-5 flex items-center justify-between gap-3">
                       <span className="rounded-full bg-cyberPurple/10 px-3 py-1 text-2xs font-black uppercase tracking-wider text-cyberPurpleLight">{scene.roles}</span>
-                      <Link href="/community" className="rounded-2xl bg-cyberPurple px-4 py-2 text-2xs font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">
+                      <PrimaryButton href="/community" className="px-4 py-2 text-2xs" variant="primary">
                         Cast Now
-                      </Link>
+                      </PrimaryButton>
                     </div>
                   </div>
                 </div>

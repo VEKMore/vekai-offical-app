@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import PrimaryButton from '../components/PrimaryButton';
 import { useEffect, useState } from 'react';
 import { fetchCampaigns, fetchProducts } from '../lib/apiClient';
 
@@ -32,9 +33,9 @@ export default function CampaignsPage() {
               <h1 className="mt-3 text-4xl font-black text-white">Join active drops and power up your scene.</h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-cyberGray">Compete for leaderboard spots, unlock exclusive merch rewards, and take your avatar into live production challenges.</p>
             </div>
-            <Link href="/explore" className="w-full rounded-2xl bg-cyberPurple px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft sm:w-auto sm:inline-flex sm:items-center sm:justify-center sm:h-14">
+            <PrimaryButton href="/explore" className="w-full sm:w-auto h-14" variant="primary">
               Discover scenes
-            </Link>
+            </PrimaryButton>
           </div>
         </section>
 
@@ -45,7 +46,9 @@ export default function CampaignsPage() {
                 <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Leaderboard</p>
                 <h2 className="mt-3 text-xl font-black text-white">Top campaign performers</h2>
               </div>
-              <Link href="/community" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">See all</Link>
+              <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+                See all
+              </PrimaryButton>
             </div>
             <div className="mt-6 space-y-4">
               {loading ? (
@@ -75,7 +78,9 @@ export default function CampaignsPage() {
                 <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Rewards</p>
                 <h2 className="mt-3 text-xl font-black text-white">Campaign-exclusive merch</h2>
               </div>
-              <Link href="/store" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">Shop now</Link>
+              <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+                Shop now
+              </PrimaryButton>
             </div>
             <div className="mt-6 grid gap-4">
               {loading ? (
@@ -87,7 +92,9 @@ export default function CampaignsPage() {
                     <h3 className="mt-3 text-sm font-black text-white">{item.title}</h3>
                     <div className="mt-4 flex items-center justify-between gap-4">
                       <span className="text-lg font-black text-white">{item.price}</span>
-                      <Link href="/store" className="rounded-full border border-white/10 px-3 py-2 text-2xs uppercase tracking-wide text-white/80 transition hover:bg-white/10">Claim</Link>
+                      <PrimaryButton href="/store" variant="secondary" className="rounded-full px-3 py-2 text-2xs">
+                        Claim
+                      </PrimaryButton>
                     </div>
                   </div>
                 ))

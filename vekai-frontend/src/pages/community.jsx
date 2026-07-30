@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import PrimaryButton from '../components/PrimaryButton';
 import { useEffect, useState } from 'react';
 import { fetchCampaigns, fetchCommunityPosts } from '../lib/apiClient';
 
@@ -33,8 +34,12 @@ export default function CommunityPage() {
               <p className="mt-4 max-w-2xl text-sm leading-7 text-cyberGray">Explore official cuts, join live polls, and discover the creators shaping the Roleverse experience.</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 sm:items-center">
-              <Link href="/community" className="w-full rounded-2xl bg-cyberPurple px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft sm:w-auto">Follow creators</Link>
-              <Link href="/explore" className="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10 sm:w-auto">Start a cut</Link>
+              <PrimaryButton href="/community" className="w-full sm:w-auto" variant="primary">
+                Follow creators
+              </PrimaryButton>
+              <PrimaryButton href="/explore" className="w-full sm:w-auto" variant="secondary">
+                Start a cut
+              </PrimaryButton>
             </div>
           </div>
         </section>
@@ -46,7 +51,9 @@ export default function CommunityPage() {
                 <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official community cuts</p>
                 <h2 className="mt-3 text-xl font-black text-white">The hottest shared creative drops</h2>
               </div>
-              <Link href="/campaigns" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">See leaderboard</Link>
+              <PrimaryButton href="/campaigns" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+                See leaderboard
+              </PrimaryButton>
             </div>
               <div className="mt-6 grid gap-6 md:grid-cols-2">
               {loading ? (
@@ -72,7 +79,9 @@ export default function CommunityPage() {
                 <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending feed</p>
                 <h2 className="mt-3 text-xl font-black text-white">What the Roleverse is talking about</h2>
               </div>
-              <Link href="/community" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">View all updates</Link>
+              <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+                View all updates
+              </PrimaryButton>
             </div>
             <div className="mt-6 space-y-4">
               {loading ? (

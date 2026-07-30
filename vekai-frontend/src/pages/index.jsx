@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import PrimaryButton from '../components/PrimaryButton';
 
 const LEADERBOARD_ITEMS = [
   { rank: '01', name: 'testuser@example.com', score: '46,400', change: '+12.7%' },
@@ -49,8 +50,12 @@ export default function RoleverseDashboard() {
               </div>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/explore" className="w-full rounded-2xl bg-cyberPurple px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft sm:w-auto">Explore Scenes</Link>
-              <Link href="/community" className="w-full rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10 sm:w-auto">Join the Community</Link>
+              <PrimaryButton href="/explore" className="w-full sm:w-auto" variant="primary">
+                Explore Scenes
+              </PrimaryButton>
+              <PrimaryButton href="/community" className="w-full sm:w-auto" variant="secondary">
+                Join the Community
+              </PrimaryButton>
             </div>
           </div>
 
@@ -87,7 +92,9 @@ export default function RoleverseDashboard() {
                   <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official Community Cuts</p>
                   <h2 className="mt-3 text-lg font-black text-white">Watch, vote & crown the best cuts</h2>
                 </div>
-                <Link href="/community" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">View all cuts</Link>
+                <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+                  View all cuts
+                </PrimaryButton>
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {CROWN_CUTS.map((item) => (
@@ -111,7 +118,9 @@ export default function RoleverseDashboard() {
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Featured Scenes</p>
               <h2 className="mt-3 text-xl font-black text-white">Featured drops from the network</h2>
             </div>
-            <Link href="/explore" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">Browse the library</Link>
+            <PrimaryButton href="/explore" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+              Browse the library
+            </PrimaryButton>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {FEATURED_SCENES.map((scene) => (
@@ -124,7 +133,9 @@ export default function RoleverseDashboard() {
                     <span>{scene.role}</span>
                     <span>{scene.views} views</span>
                   </div>
-                  <button className="mt-5 inline-flex items-center justify-center rounded-2xl bg-cyberPurple px-4 py-3 text-2xs font-black uppercase tracking-wide-md text-white transition hover:bg-cyberPurpleSoft">Cast Into Scene</button>
+                  <PrimaryButton className="mt-5 text-2xs px-4 py-3" variant="primary">
+                    Cast Into Scene
+                  </PrimaryButton>
                 </div>
               </div>
             ))}
@@ -137,7 +148,9 @@ export default function RoleverseDashboard() {
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending Creations</p>
               <h2 className="mt-3 text-xl font-black text-white">Your generated video experiences</h2>
             </div>
-            <Link href="/store" className="rounded-full bg-white/5 px-4 py-2 text-2xs uppercase tracking-wider text-white/80 transition hover:bg-white/10">Shop merch</Link>
+            <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+              Shop merch
+            </PrimaryButton>
           </div>
           <div className="mt-6 space-y-4">
             {TRENDING_FEED.map((item) => (
@@ -150,9 +163,15 @@ export default function RoleverseDashboard() {
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <button className="rounded-2xl bg-cyberPurple px-4 py-2 text-2xs font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">Share</button>
-                  <button className="rounded-2xl border border-white/10 px-4 py-2 text-2xs font-black uppercase tracking-wide text-white/80 transition hover:border-white/30">Edit</button>
-                  <button className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-2 text-2xs font-black uppercase tracking-wide text-red-300 transition hover:bg-red-500/20">Delete</button>
+                  <PrimaryButton className="px-4 py-2 text-2xs" variant="primary">
+                    Share
+                  </PrimaryButton>
+                  <PrimaryButton className="px-4 py-2 text-2xs" variant="secondary">
+                    Edit
+                  </PrimaryButton>
+                  <PrimaryButton className="px-4 py-2 text-2xs" variant="danger">
+                    Delete
+                  </PrimaryButton>
                 </div>
               </div>
             ))}
