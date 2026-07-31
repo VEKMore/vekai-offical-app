@@ -5,15 +5,21 @@ import { useRouter } from 'next/router';
 const TOP_NAV = [
   { key: 'home', label: 'Home', href: '/' },
   { key: 'explore', label: 'Explore', href: '/explore' },
+  { key: 'avatar', label: 'Avatar Studio', href: '/avatar-builder' },
   { key: 'community', label: 'Community', href: '/community' },
   { key: 'campaigns', label: 'Campaigns', href: '/campaigns' },
+  { key: 'workflow', label: 'Workflow', href: '/workflow' },
+  { key: 'communication', label: 'Communication', href: '/communication' },
   { key: 'store', label: 'Store', href: '/store' }
 ];
 
 const SIDEBAR_NAV = [
-  { key: 'home', label: 'My Avatar', href: '/' },
-  { key: 'explore', label: 'My Scenes', href: '/explore' },
-  { key: 'community', label: 'My Feed', href: '/community' },
+  { key: 'profile', label: 'Creator Profile', href: '/profile' },
+  { key: 'avatar', label: 'Avatar Studio', href: '/avatar-builder' },
+  { key: 'workflow', label: 'Workflow & Sharing', href: '/workflow' },
+  { key: 'communication', label: 'Communication Hub', href: '/communication' },
+  { key: 'explore', label: 'Explore Scenes', href: '/explore' },
+  { key: 'community', label: 'Community', href: '/community' },
   { key: 'campaigns', label: 'Active Campaigns', href: '/campaigns' },
   { key: 'store', label: 'Merchandise Store', href: '/store' }
 ];
