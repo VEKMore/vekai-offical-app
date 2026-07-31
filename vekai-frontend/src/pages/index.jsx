@@ -32,9 +32,9 @@ export default function RoleverseDashboard() {
       <div className="space-y-6">
         <section className="grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
           <div className="rounded-[2.5rem] border border-white/10 bg-cyberPanel/95 p-8 shadow-glow-lg backdrop-blur-sm">
-            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Your stage awaits</p>
-            <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-tightest text-white sm:text-5xl">Become anyone. Star in everything.</h1>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Craft your boundless avatar into cinematic scenes with real-world experiences, and share your spotlight with the world.</p>
+            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Your imagination is the limit</p>
+            <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-tightest text-white sm:text-5xl">Create any avatar. Build any story. Launch any world.</h1>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Vekai is a creative platform where users can design avatars in any form imaginable—human, same-gender, animal, robot, mythical, role-based, or symbolic—and place them into scenes that feel limitless. Users can write stories inspired by films, documentaries, books, online games, ancient myths, imagination, or entirely original ideas. Inside the app, creators can build projects, raise campaigns, and turn their stories into full reel productions. Nothing is off limits—ideas become communities, discussions, and shared creative ecosystems, while any asset or project can be merchandised or used as a hub for fundraising.</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
                 <p className="text-3xs uppercase tracking-wider text-cyberGray">Live Creators</p>
