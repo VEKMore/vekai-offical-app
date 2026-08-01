@@ -50,17 +50,15 @@ export default function PrimaryButton({ href, children, variant = 'primary', cla
     accent: 'bg-cyberYellow text-cyberSurface hover:bg-cyberYellowSoft',
     danger: 'bg-red-500/80 text-white hover:bg-red-500',
   };
-  const sizeClasses = 'px-6 py-3 text-sm';
+  const sizeClasses = 'px-5 py-2 text-sm';
   const classes = `${baseStyles} ${sizeClasses} ${variants[variant] ?? variants.primary} ${className}`.trim();
 
-  const iconNode = icon ? <Icon name={icon} className="w-4 h-4" /> : null;
-
   const content = (
-    <>
-      {icon && iconPosition === 'left' ? <span className="mr-2">{iconNode}</span> : null}
+    <span className={icon ? 'inline-flex items-center justify-center gap-2' : undefined}>
+      {icon && iconPosition === 'left' ? <Icon name={icon} className="w-4 h-4" /> : null}
       <span>{children}</span>
-      {icon && iconPosition === 'right' ? <span className="ml-2">{iconNode}</span> : null}
-    </>
+      {icon && iconPosition === 'right' ? <Icon name={icon} className="w-4 h-4" /> : null}
+    </span>
   );
 
   if (href) {
