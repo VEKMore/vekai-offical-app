@@ -14,6 +14,11 @@ export async function fetchCategories() {
   return data.SCENE_CATEGORIES || ['All Categories'];
 }
 
+export async function fetchSessions() {
+  const data = await getSiteData();
+  return data.SCENE_SESSIONS || ['All Sessions'];
+}
+
 export async function fetchScenesMock(q) {
   const url = q ? `/api/mock/scenes?q=${encodeURIComponent(q)}` : '/api/mock/scenes'
   const res = await fetch(url)
