@@ -54,11 +54,11 @@ export default function RoleverseDashboard() {
                 <p className="mt-3 text-2xl font-black text-cyberTeal">+16.8%</p>
               </div>
             </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <PrimaryButton href="/explore" className="w-full sm:w-auto" variant="primary">
+            <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
+              <PrimaryButton href="/explore" className="w-full" variant="primary">
                 Explore Scenes
               </PrimaryButton>
-              <PrimaryButton href="/community" className="w-full sm:w-auto" variant="secondary">
+              <PrimaryButton href="/community" className="w-full" variant="secondary">
                 Join the Community
               </PrimaryButton>
             </div>
@@ -66,8 +66,8 @@ export default function RoleverseDashboard() {
 
           <div className="space-y-6">
             <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-              <div className="flex items-center justify-between gap-4">
-                <div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
                   <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Campaign Challenges</p>
                   <h2 className="mt-3 text-lg font-black text-white">Live Leaderboard</h2>
                 </div>
@@ -92,12 +92,12 @@ export default function RoleverseDashboard() {
             </div>
 
             <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-              <div className="flex items-center justify-between gap-4">
-                <div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
                   <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official Community Cuts</p>
                   <h2 className="mt-3 text-lg font-black text-white">Watch, vote & crown the best cuts</h2>
                 </div>
-                <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+                <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto">
                   View all cuts
                 </PrimaryButton>
               </div>
@@ -118,12 +118,12 @@ export default function RoleverseDashboard() {
         </section>
 
         <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-          <div className="flex items-center justify-between gap-4">
-            <div>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Featured Scenes</p>
               <h2 className="mt-3 text-xl font-black text-white">Featured drops from the network</h2>
             </div>
-            <PrimaryButton href="/explore" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+            <PrimaryButton href="/explore" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto">
               Browse the library
             </PrimaryButton>
           </div>
@@ -148,12 +148,12 @@ export default function RoleverseDashboard() {
         </section>
 
         <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-          <div className="flex items-center justify-between gap-4">
-            <div>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending Creations</p>
               <h2 className="mt-3 text-xl font-black text-white">Your generated video experiences</h2>
             </div>
-            <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+            <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto">
               Shop merch
             </PrimaryButton>
           </div>
@@ -182,14 +182,14 @@ export default function RoleverseDashboard() {
                   <img src={item.thumb} alt="trending-thumb" className="mt-4 h-44 w-full object-cover rounded-2xl" />
                 ) : null}
 
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <PrimaryButton className="px-4 py-2 text-2xs" variant="primary">
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  <PrimaryButton className="w-full px-4 py-2 text-2xs" variant="primary">
                     Share
                   </PrimaryButton>
-                  <PrimaryButton className="px-4 py-2 text-2xs" variant="secondary">
+                  <PrimaryButton className="w-full px-4 py-2 text-2xs" variant="secondary">
                     Edit
                   </PrimaryButton>
-                  <PrimaryButton className="px-4 py-2 text-2xs" variant="danger">
+                  <PrimaryButton className="w-full px-4 py-2 text-2xs" variant="danger">
                     Delete
                   </PrimaryButton>
                 </div>
