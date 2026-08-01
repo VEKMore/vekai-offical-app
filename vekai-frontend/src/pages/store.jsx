@@ -46,10 +46,10 @@ export default function StorePage() {
                   <p className="text-lg font-black text-cyberYellow">{item.price}</p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <PrimaryButton className="w-full sm:w-auto px-4 py-3" variant="primary">
+                  <PrimaryButton className="w-full sm:w-auto btn-small" variant="primary" icon="shop">
                     Add to cart
                   </PrimaryButton>
-                  <PrimaryButton className="w-full sm:w-auto px-4 py-3" variant="secondary">
+                  <PrimaryButton className="w-full sm:w-auto btn-small" variant="secondary" icon="search">
                     Details
                   </PrimaryButton>
                 </div>

@@ -33,7 +33,7 @@ export default function CampaignsPage() {
               <h1 className="mt-3 text-4xl font-black text-white">Join active drops and power up your scene.</h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-cyberGray">Compete for leaderboard spots, unlock exclusive merch rewards, and take your avatar into live production challenges.</p>
             </div>
-            <PrimaryButton href="/explore" className="w-full sm:w-auto h-14" variant="primary">
+            <PrimaryButton href="/explore" className="w-full sm:w-auto h-14" variant="primary" icon="search">
               Discover scenes
             </PrimaryButton>
           </div>
@@ -46,7 +46,7 @@ export default function CampaignsPage() {
                 <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Leaderboard</p>
                 <h2 className="mt-3 text-xl font-black text-white">Top campaign performers</h2>
               </div>
-              <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+              <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs" icon="user">
                 See all
               </PrimaryButton>
             </div>
@@ -92,7 +92,7 @@ export default function CampaignsPage() {
                     <h3 className="mt-3 text-sm font-black text-white">{item.title}</h3>
                     <div className="mt-4 flex items-center justify-between gap-4">
                       <span className="text-lg font-black text-white">{item.price}</span>
-                      <PrimaryButton href="/store" variant="secondary" className="rounded-full px-3 py-2 text-2xs">
+                      <PrimaryButton href="/store" variant="secondary" className="rounded-full px-3 py-2 text-2xs btn-small" icon="shop">
                         Claim
                       </PrimaryButton>
                     </div>

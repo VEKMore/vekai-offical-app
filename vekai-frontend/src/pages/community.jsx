@@ -34,10 +34,10 @@ export default function CommunityPage() {
               <p className="mt-4 max-w-2xl text-sm leading-7 text-cyberGray">Explore official cuts, join live polls, and discover the creators shaping the Roleverse experience.</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 sm:items-center">
-              <PrimaryButton href="/community" className="w-full sm:w-auto" variant="primary">
+              <PrimaryButton href="/community" className="w-full sm:w-auto" variant="primary" icon="user">
                 Follow creators
               </PrimaryButton>
-              <PrimaryButton href="/explore" className="w-full sm:w-auto" variant="secondary">
+              <PrimaryButton href="/explore" className="w-full sm:w-auto" variant="secondary" icon="cast">
                 Start a cut
               </PrimaryButton>
             </div>
@@ -51,7 +51,7 @@ export default function CommunityPage() {
                 <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official community cuts</p>
                 <h2 className="mt-3 text-xl font-black text-white">The hottest shared creative drops</h2>
               </div>
-              <PrimaryButton href="/campaigns" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
+              <PrimaryButton href="/campaigns" variant="secondary" className="rounded-full px-4 py-2 text-2xs" icon="user">
                 See leaderboard
               </PrimaryButton>
             </div>

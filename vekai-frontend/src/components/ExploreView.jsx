@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PrimaryButton from './PrimaryButton';
 
 const SCENES_DATA = [
   { id: 's1', tag: 'Action Movie', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', desc: 'A high-octane action movie scene set in a dystopian city, featuring explosive stunts and hero-villain face-offs.', roles: '2 roles', views: '96400 views', color: 'bg-red-600/20 text-red-400 border-red-500/30' },
@@ -99,7 +100,7 @@ export default function ExploreView({ onNavigate }) {
                     </div>
                   </div>
                   <div className="w-full flex gap-2 border-t border-white/5 pt-3">
-                    <PrimaryButton className="flex-1 text-[10px] tracking-widest rounded-md py-2" variant="primary">
+                    <PrimaryButton className="flex-1 text-[10px] tracking-widest rounded-md btn-small" variant="primary" icon="cast">
                       Cast Into Scene
                     </PrimaryButton>
                   </div>
