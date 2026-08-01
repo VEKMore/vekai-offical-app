@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import PrimaryButton from '../components/PrimaryButton';
+import MasonrySimple from '../components/MasonrySimple';
 
 const LEADERBOARD_ITEMS = [
   { rank: '01', name: 'testuser@example.com', score: '46,400', change: '+12.7%' },
@@ -55,10 +56,10 @@ export default function RoleverseDashboard() {
               </div>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
-              <PrimaryButton href="/explore" className="w-full" variant="primary">
+              <PrimaryButton href="/explore" className="w-full" variant="primary" icon="search">
                 Explore Scenes
               </PrimaryButton>
-              <PrimaryButton href="/community" className="w-full" variant="secondary">
+              <PrimaryButton href="/community" className="w-full" variant="secondary" icon="user">
                 Join the Community
               </PrimaryButton>
             </div>
@@ -126,34 +127,37 @@ export default function RoleverseDashboard() {
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Featured Scenes</p>
               <h2 className="mt-3 text-3xl font-black tracking-tight text-white">Top editorial picks</h2>
             </div>
-            <PrimaryButton href="/explore" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto">
+            <PrimaryButton href="/explore" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto" icon="search">
               Browse the library
             </PrimaryButton>
           </div>
-          <div className="mt-6 masonry-grid">
-            {FEATURED_SCENES.map((scene) => (
-              <article key={scene.id} className="masonry-item overflow-hidden rounded-4xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
-                <div className="relative overflow-hidden">
-                  <img src={scene.image} alt={scene.title} className="w-full object-cover max-h-[420px] transition duration-500 hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/50 px-3 py-1 text-2xs uppercase tracking-wider text-white backdrop-blur-sm">
-                    <span>{scene.label}</span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="text-xl font-black">{scene.title}</h3>
-                    <div className="mt-2 flex items-center justify-between text-3xs uppercase tracking-wider text-cyberGray">
-                      <span>{scene.role}</span>
-                      <span>{scene.views} views</span>
+          <div className="mt-6">
+            <MasonrySimple
+              items={FEATURED_SCENES}
+              renderItem={(scene) => (
+                <article key={scene.id} className="overflow-hidden rounded-4xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
+                  <div className="relative overflow-hidden">
+                    <img src={scene.image} alt={scene.title} className="w-full object-cover max-h-[420px] transition duration-500 hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+                    <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/50 px-3 py-1 text-2xs uppercase tracking-wider text-white backdrop-blur-sm">
+                      <span>{scene.label}</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h3 className="text-xl font-black">{scene.title}</h3>
+                      <div className="mt-2 flex items-center justify-between text-3xs uppercase tracking-wider text-cyberGray">
+                        <span>{scene.role}</span>
+                        <span>{scene.views} views</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="p-5">
-                  <PrimaryButton className="w-full text-2xs px-4 py-3 btn-small" variant="primary">
-                    Cast Into Scene
-                  </PrimaryButton>
-                </div>
-              </article>
-            ))}
+                  <div className="p-5">
+                    <PrimaryButton className="w-full text-2xs px-4 py-3 btn-small" variant="primary" icon="cast">
+                      Cast Into Scene
+                    </PrimaryButton>
+                  </div>
+                </article>
+              )}
+            />
           </div>
         </section>
 
@@ -163,7 +167,7 @@ export default function RoleverseDashboard() {
               <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending Creations</p>
               <h2 className="mt-3 text-3xl font-black tracking-tight text-white">Fresh stories in motion</h2>
             </div>
-            <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto">
+            <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto" icon="shop">
               Shop merch
             </PrimaryButton>
           </div>
@@ -190,7 +194,7 @@ export default function RoleverseDashboard() {
                     <span>↻ {item.shares}</span>
                   </div>
                   <div className="mt-5">
-                    <PrimaryButton className="w-full px-4 py-3 text-2xs btn-small" variant="primary">
+                    <PrimaryButton className="w-full px-4 py-3 text-2xs btn-small" variant="primary" icon="play">
                       Watch clip
                     </PrimaryButton>
                   </div>
