@@ -20,10 +20,15 @@ const CROWN_CUTS = [
   { id: 'c2', title: 'GROOVE ODYSSEY: NEON STAGE', user: 'testuser@example.com', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80' }
 ];
 
+const DEMO_VIDEO = {
+  src: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
+  poster: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80'
+};
+
 const TRENDING_FEED = [
-  { id: 't1', text: 'Just a quiet drama moment with Dr. Sollis. More to come.', likes: '210', shares: '45' },
-  { id: 't2', text: 'Dropped my hero arc in Shadowstrike — this is the one. #NeonFrontier', likes: '18,700', shares: '3,400' },
-  { id: 't3', text: 'Vibing with the Maestro in Groove Odyssey ✨ Rhythm hits different when you’re in the scene.', likes: '4,300', shares: '980' }
+  { id: 't1', text: 'Just a quiet drama moment with Dr. Sollis. More to come.', likes: '210', shares: '45', video: DEMO_VIDEO.src, poster: DEMO_VIDEO.poster },
+  { id: 't2', text: 'Dropped my hero arc in Shadowstrike — this is the one. #NeonFrontier', likes: '18,700', shares: '3,400', thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80' },
+  { id: 't3', text: 'Vibing with the Maestro in Groove Odyssey ✨ Rhythm hits different when you’re in the scene.', likes: '4,300', shares: '980', thumb: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=900&q=80' }
 ];
 
 export default function RoleverseDashboard() {
@@ -162,6 +167,21 @@ export default function RoleverseDashboard() {
                     <span>↻ {item.shares}</span>
                   </div>
                 </div>
+
+                {/* demo video or thumbnail */}
+                {item.video ? (
+                  <div className="mt-4">
+                    <video
+                      controls
+                      src={item.video}
+                      poster={item.poster}
+                      className="w-full rounded-2xl bg-black"
+                    />
+                  </div>
+                ) : item.thumb ? (
+                  <img src={item.thumb} alt="trending-thumb" className="mt-4 h-44 w-full object-cover rounded-2xl" />
+                ) : null}
+
                 <div className="mt-4 flex flex-wrap gap-3">
                   <PrimaryButton className="px-4 py-2 text-2xs" variant="primary">
                     Share
