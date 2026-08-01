@@ -10,25 +10,25 @@ const LEADERBOARD_ITEMS = [
 ];
 
 const FEATURED_SCENES = [
-  { id: 'f1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', label: 'Action Movie', image: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=900&q=80', role: 'Hero', views: '72,000' },
-  { id: 'f2', title: 'ORIGEN: AI DREAMSCAPE', label: 'AI Original', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80', role: 'AI Role', views: '91,500' },
-  { id: 'f3', title: 'GROOVE ODYSSEY: NEON STAGE', label: 'Musical/Dance', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80', role: 'Mentor', views: '27,600' }
+  { id: 'f1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', label: 'Action Movie', image: '/demo/demo-featured-1.jpg', role: 'Hero', views: '72,000' },
+  { id: 'f2', title: 'ORIGEN: AI DREAMSCAPE', label: 'AI Original', image: '/demo/demo-featured-2.jpg', role: 'AI Role', views: '91,500' },
+  { id: 'f3', title: 'GROOVE ODYSSEY: NEON STAGE', label: 'Musical/Dance', image: '/demo/demo-featured-3.jpg', role: 'Mentor', views: '27,600' }
 ];
 
 const CROWN_CUTS = [
-  { id: 'c1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', user: 'testuser@example.com', image: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=900&q=80' },
-  { id: 'c2', title: 'GROOVE ODYSSEY: NEON STAGE', user: 'testuser@example.com', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80' }
+  { id: 'c1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', user: 'testuser@example.com', image: '/demo/demo-crown-1.jpg' },
+  { id: 'c2', title: 'GROOVE ODYSSEY: NEON STAGE', user: 'testuser@example.com', image: '/demo/demo-crown-2.jpg' }
 ];
 
 const DEMO_VIDEO = {
-  src: 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
-  poster: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80'
+  src: '/demo/demo-video.mp4',
+  poster: '/demo/demo-thumb-1.jpg'
 };
 
 const TRENDING_FEED = [
   { id: 't1', text: 'Just a quiet drama moment with Dr. Sollis. More to come.', likes: '210', shares: '45', video: DEMO_VIDEO.src, poster: DEMO_VIDEO.poster },
-  { id: 't2', text: 'Dropped my hero arc in Shadowstrike — this is the one. #NeonFrontier', likes: '18,700', shares: '3,400', thumb: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80' },
-  { id: 't3', text: 'Vibing with the Maestro in Groove Odyssey ✨ Rhythm hits different when you’re in the scene.', likes: '4,300', shares: '980', thumb: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=900&q=80' }
+  { id: 't2', text: 'Dropped my hero arc in Shadowstrike — this is the one. #NeonFrontier', likes: '18,700', shares: '3,400', thumb: '/demo/demo-thumb-2.jpg' },
+  { id: 't3', text: 'Vibing with the Maestro in Groove Odyssey ✨ Rhythm hits different when you’re in the scene.', likes: '4,300', shares: '980', thumb: '/demo/demo-thumb-3.jpg' }
 ];
 
 export default function RoleverseDashboard() {
