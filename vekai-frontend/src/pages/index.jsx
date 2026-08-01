@@ -130,11 +130,11 @@ export default function RoleverseDashboard() {
               Browse the library
             </PrimaryButton>
           </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-6 masonry-grid">
             {FEATURED_SCENES.map((scene) => (
-              <article key={scene.id} className="overflow-hidden rounded-4xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
+              <article key={scene.id} className="masonry-item overflow-hidden rounded-4xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
                 <div className="relative overflow-hidden">
-                  <img src={scene.image} alt={scene.title} className="h-64 w-full object-cover transition duration-500 hover:scale-105" />
+                  <img src={scene.image} alt={scene.title} className="w-full object-cover max-h-[420px] transition duration-500 hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
                   <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/50 px-3 py-1 text-2xs uppercase tracking-wider text-white backdrop-blur-sm">
                     <span>{scene.label}</span>
@@ -148,7 +148,7 @@ export default function RoleverseDashboard() {
                   </div>
                 </div>
                 <div className="p-5">
-                  <PrimaryButton className="w-full text-2xs px-4 py-3" variant="primary">
+                  <PrimaryButton className="w-full text-2xs px-4 py-3 btn-small" variant="primary">
                     Cast Into Scene
                   </PrimaryButton>
                 </div>
@@ -184,13 +184,13 @@ export default function RoleverseDashboard() {
                   <img src={item.thumb} alt="trending-thumb" className="h-64 w-full object-cover" />
                 )}
                 <div className="p-5">
-                  <p className="text-sm leading-6 text-cyberGray">{item.text}</p>
+                  <p className="text-sm leading-6 text-cyberGray line-clamp-3">{item.text}</p>
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-2xs uppercase tracking-wider text-cyberGrayMuted">
                     <span>♥ {item.likes}</span>
                     <span>↻ {item.shares}</span>
                   </div>
                   <div className="mt-5">
-                    <PrimaryButton className="w-full px-4 py-3 text-2xs" variant="primary">
+                    <PrimaryButton className="w-full px-4 py-3 text-2xs btn-small" variant="primary">
                       Watch clip
                     </PrimaryButton>
                   </div>

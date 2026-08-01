@@ -105,11 +105,11 @@ export default function ExplorePage() {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-6 masonry-grid">
             {filteredScenes.map((scene) => (
-              <div key={scene.id} className="group overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
+              <article key={scene.id} className="masonry-item group overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
                 <div className="relative overflow-hidden">
-                  <img src={scene.image} alt={scene.title} className="h-56 w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <img src={scene.image} alt={scene.title} className="w-full object-cover transition duration-500 group-hover:scale-105 max-h-[420px]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                   <div className="absolute left-4 top-4 flex flex-wrap gap-2">
                     <span className="rounded-full bg-cyberPurple/90 px-3 py-1 text-2xs font-black uppercase tracking-wider text-white">{scene.category}</span>
@@ -118,21 +118,21 @@ export default function ExplorePage() {
                 </div>
                 <div className="p-5">
                   <h3 className="text-2xl font-black text-white">{scene.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-cyberGray min-h-[84px]">{scene.desc}</p>
+                  <p className="mt-3 text-sm leading-6 text-cyberGray line-clamp-3">{scene.desc}</p>
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-2xs uppercase tracking-wider text-cyberGrayMuted">
                     <span>{scene.views} views</span>
                     <span className="rounded-full bg-cyberPurple/10 px-3 py-1 font-black text-cyberPurpleLight">{scene.roles}</span>
                   </div>
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    <PrimaryButton href="/community" className="w-full px-4 py-2 text-2xs" variant="primary">
+                    <PrimaryButton href="/community" className="w-full px-4 py-2 text-2xs btn-small" variant="primary">
                       Cast Now
                     </PrimaryButton>
-                    <PrimaryButton className="w-full px-4 py-2 text-2xs" variant="secondary">
+                    <PrimaryButton className="w-full px-4 py-2 text-2xs btn-small" variant="secondary">
                       Preview
                     </PrimaryButton>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
             {filteredScenes.length === 0 && (
               <div className="col-span-full rounded-4xl border border-white/10 bg-white/5 p-8 text-center text-sm text-cyberGray">
