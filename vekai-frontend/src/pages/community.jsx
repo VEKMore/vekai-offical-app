@@ -1,27 +1,59 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useMemo, useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import PrimaryButton from '../components/PrimaryButton';
-import { useEffect, useState } from 'react';
 import { fetchCampaigns, fetchCommunityPosts } from '../lib/apiClient';
 
+const COMMUNITY_STATS = [
+  { label: 'Live polls', value: '12' },
+  { label: 'Creator circles', value: '89' },
+  { label: 'Moments today', value: '247' }
+];
+
+const POLL_OPTIONS = [
+  { label: 'More documentary-style scenes', votes: 64 },
+  { label: 'More cinematic action drops', votes: 41 },
+  { label: 'More experimental fashion edits', votes: 22 }
+];
+
+const COMMUNICATION_CHANNELS = [
+  { name: 'Story circle', members: '24 members', active: true },
+  { name: 'Scene feedback', members: '12 members', active: false },
+  { name: 'Campaign crew', members: '9 members', active: false }
+];
+
+const DISCUSSION_ITEMS = [
+  { author: 'Mina', text: 'The new avatar mood fits the scene really well.' },
+  { author: 'Jules', text: 'Can we add a stronger mythic reference to the opening shot?' },
+  { author: 'Ari', text: 'Yes — I’ll update the storyboard and share the next draft tonight.' }
+];
+
 export default function CommunityPage() {
-  const [cuts, setCuts] = useState([])
-  const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [cuts, setCuts] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('featured');
+  const [followed, setFollowed] = useState([]);
 
   useEffect(() => {
-    let mounted = true
+    let mounted = true;
     Promise.all([fetchCampaigns(), fetchCommunityPosts()])
       .then(([campaigns, posts]) => {
-        if (!mounted) return
-        setCuts(campaigns)
-        setPosts(posts)
+        if (!mounted) return;
+        setCuts(campaigns);
+        setPosts(posts);
       })
       .catch(() => {})
-      .finally(() => mounted && setLoading(false))
-    return () => { mounted = false }
-  }, [])
+      .finally(() => mounted && setLoading(false));
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const featuredPost = useMemo(() => posts[0], [posts]);
+
+  const toggleFollow = (id) => {
+    setFollowed((current) => (current.includes(id) ? current.filter((item) => item !== id) : [...current, id]));
+  };
 
   return (
     <Layout>
@@ -42,54 +74,169 @@ export default function CommunityPage() {
               </PrimaryButton>
             </div>
           </div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {COMMUNITY_STATS.map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <p className="text-3xs uppercase tracking-wider text-cyberGray">{stat.label}</p>
+                <p className="mt-2 text-xl font-black text-white">{stat.value}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
-        <section className="space-y-6">
+        <section className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
           <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official community cuts</p>
-                <h2 className="mt-3 text-xl font-black text-white">The hottest shared creative drops</h2>
-              </div>
-              <PrimaryButton href="/campaigns" variant="secondary" className="rounded-full px-4 py-2 text-2xs" icon="user">
-                See leaderboard
-              </PrimaryButton>
-            </div>
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
-              {loading ? (
-                <div className="text-cyberGray">Loading...</div>
-              ) : (
-                cuts.map((cut) => (
-                  <div key={cut.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm">
-                    <img src={cut.image} alt={cut.title} className="h-64 w-full object-cover" />
-                    <div className="p-5">
-                      <span className="inline-flex rounded-full bg-cyberYellow/10 px-3 py-1 text-2xs font-black uppercase tracking-wider text-cyberYellow">Official Cut</span>
-                      <h3 className="mt-4 text-lg font-black text-white">{cut.title}</h3>
-                      <p className="mt-2 text-xs uppercase tracking-wide text-cyberGrayMuted">{cut.user}</p>
-                    </div>
+            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Studio channels</p>
+            <div className="mt-5 space-y-3">
+              {COMMUNICATION_CHANNELS.map((channel) => (
+                <div key={channel.name} className={`rounded-2xl border p-4 ${channel.active ? 'border-cyberTeal/30 bg-cyberTeal/10' : 'border-white/10 bg-white/5'}`}>
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-sm font-black text-white">{channel.name}</p>
+                    {channel.active && <span className="text-2xs font-black uppercase tracking-wider text-cyberTeal">Live</span>}
                   </div>
-                ))
-              )}
+                  <p className="mt-2 text-xs text-cyberGray">{channel.members}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending feed</p>
-                <h2 className="mt-3 text-xl font-black text-white">What the Roleverse is talking about</h2>
-              </div>
-              <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs">
-                View all updates
-              </PrimaryButton>
+            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Latest discussion</p>
+            <div className="mt-5 space-y-3">
+              {DISCUSSION_ITEMS.map((item) => (
+                <div key={item.author + item.text} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-sm font-black text-white">{item.author}</p>
+                  <p className="mt-2 text-sm leading-6 text-cyberGray">{item.text}</p>
+                </div>
+              ))}
             </div>
+            <div className="mt-6 rounded-2xl border border-dashed border-white/10 p-4 text-sm text-cyberGray">
+              Add a note, share a scene revision, or start a new discussion thread.
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
+          <div className="flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => setActiveTab('featured')}
+              className={`rounded-full px-4 py-2 text-2xs font-black uppercase tracking-wider transition ${activeTab === 'featured' ? 'bg-cyberPurple text-white' : 'border border-white/10 bg-white/5 text-cyberGray'}`}
+            >
+              Featured
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('feed')}
+              className={`rounded-full px-4 py-2 text-2xs font-black uppercase tracking-wider transition ${activeTab === 'feed' ? 'bg-cyberPurple text-white' : 'border border-white/10 bg-white/5 text-cyberGray'}`}
+            >
+              Feed
+            </button>
+          </div>
+
+          {activeTab === 'featured' ? (
+            <div className="mt-6 grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+              <div className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep">
+                <div className="border-b border-white/10 bg-gradient-to-br from-cyberPurple/20 to-cyberTeal/10 p-6">
+                  <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Spotlight</p>
+                  <h2 className="mt-3 text-2xl font-black text-white">{featuredPost?.text || 'Community spotlight is loading'}</h2>
+                  <p className="mt-4 text-sm leading-7 text-cyberGray">Creators are collaborating in real time as fresh scenes move from draft to launch.</p>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-2xs uppercase tracking-wider text-cyberGray">Live engagement</span>
+                    <PrimaryButton href="/campaigns" variant="secondary" className="rounded-full px-4 py-2 text-2xs" icon="user">
+                      Join poll
+                    </PrimaryButton>
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-3 text-sm text-cyberGray">
+                    <span>♥ {featuredPost?.likes || 0}</span>
+                    <span>↻ {featuredPost?.shares || 0}</span>
+                    <span>● {followed.length} following</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Live poll</p>
+                      <h2 className="mt-3 text-xl font-black text-white">What should the next community cut explore?</h2>
+                    </div>
+                  </div>
+                  <div className="mt-5 space-y-3">
+                    {POLL_OPTIONS.map((option) => (
+                      <div key={option.label} className="rounded-2xl border border-white/10 bg-cyberPanelDeep px-4 py-3">
+                        <div className="flex items-center justify-between gap-3 text-sm text-cyberGray">
+                          <span>{option.label}</span>
+                          <span className="font-black text-white">{option.votes}%</span>
+                        </div>
+                        <div className="mt-3 h-2 rounded-full bg-white/10">
+                          <div className="h-2 rounded-full bg-cyberPurple" style={{ width: `${option.votes}%` }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Official community cuts</p>
+                      <h2 className="mt-3 text-xl font-black text-white">The hottest shared creative drops</h2>
+                    </div>
+                    <PrimaryButton href="/campaigns" variant="secondary" className="rounded-full px-4 py-2 text-2xs" icon="user">
+                      See leaderboard
+                    </PrimaryButton>
+                  </div>
+                  <div className="mt-6 grid gap-4">
+                    {loading ? (
+                      <div className="text-cyberGray">Loading...</div>
+                    ) : (
+                      cuts.map((cut) => (
+                        <div key={cut.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep">
+                          <img src={cut.image} alt={cut.title} className="h-32 w-full object-cover" />
+                          <div className="p-4">
+                            <div className="flex items-center justify-between gap-3">
+                              <div>
+                                <span className="inline-flex rounded-full bg-cyberYellow/10 px-3 py-1 text-2xs font-black uppercase tracking-wider text-cyberYellow">Official Cut</span>
+                                <h3 className="mt-3 text-sm font-black text-white">{cut.title}</h3>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => toggleFollow(cut.id)}
+                                className={`rounded-full px-3 py-2 text-2xs font-black uppercase tracking-wider transition ${followed.includes(cut.id) ? 'bg-cyberPurple text-white' : 'border border-white/10 bg-white/5 text-cyberGray'}`}
+                              >
+                                {followed.includes(cut.id) ? 'Following' : 'Follow'}
+                              </button>
+                            </div>
+                            <p className="mt-2 text-xs uppercase tracking-wide text-cyberGrayMuted">{cut.user}</p>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
             <div className="mt-6 space-y-4">
               {loading ? (
                 <div className="text-cyberGray">Loading...</div>
               ) : (
                 posts.map((item) => (
                   <div key={item.id} className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <p className="text-sm text-gray-200">{item.text}</p>
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <p className="text-sm text-gray-200">{item.text}</p>
+                      <button
+                        type="button"
+                        onClick={() => toggleFollow(item.id)}
+                        className={`rounded-full px-3 py-2 text-2xs font-black uppercase tracking-wider transition ${followed.includes(item.id) ? 'bg-cyberPurple text-white' : 'border border-white/10 bg-white/5 text-cyberGray'}`}
+                      >
+                        {followed.includes(item.id) ? 'Following' : 'Follow'}
+                      </button>
+                    </div>
                     <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-3xs uppercase tracking-wide text-cyberGray">
                       <span>♥ {item.likes}</span>
                       <span>↻ {item.shares}</span>
@@ -98,7 +245,7 @@ export default function CommunityPage() {
                 ))
               )}
             </div>
-          </div>
+          )}
         </section>
       </div>
     </Layout>

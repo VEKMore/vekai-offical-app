@@ -1,119 +1,40 @@
 import React from 'react';
-import Link from 'next/link';
 import Layout from '../components/Layout';
 import PrimaryButton from '../components/PrimaryButton';
-import MasonrySimple from '../components/MasonrySimple';
 
-const LEADERBOARD_ITEMS = [
-  { rank: '01', name: 'testuser@example.com', score: '46,400', change: '+12.7%' },
-  { rank: '02', name: 'Neon Frontier Challenge', score: '39,000', change: '+8.1%' },
-  { rank: '03', name: 'Velvet Runway Challenge', score: '27,300', change: '+3.2%' }
+const LANDING_FEATURES = [
+  { title: 'Create without limits', text: 'Blend avatars, scenes, stories, and brand worlds into one expressive workspace.' },
+  { title: 'Launch with community', text: 'Collect feedback, publish drops, and turn momentum into campaigns and merch.' },
+  { title: 'Stay in sync', text: 'Move from concept to review to release without leaving the platform.' }
 ];
 
-const FEATURED_SCENES = [
-  { id: 'f1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', label: 'Action Movie', image: '/demo/demo-featured-1.jpg', role: 'Hero', views: '72,000' },
-  { id: 'f2', title: 'ORIGEN: AI DREAMSCAPE', label: 'AI Original', image: '/demo/demo-featured-2.jpg', role: 'AI Role', views: '91,500' },
-  { id: 'f3', title: 'GROOVE ODYSSEY: NEON STAGE', label: 'Musical/Dance', image: '/demo/demo-featured-3.jpg', role: 'Mentor', views: '27,600' }
-];
-
-const CROWN_CUTS = [
-  { id: 'c1', title: 'SHADOWSTRIKE: CITY UNDER SIEGE', user: 'testuser@example.com', image: '/demo/demo-crown-1.jpg' },
-  { id: 'c2', title: 'GROOVE ODYSSEY: NEON STAGE', user: 'testuser@example.com', image: '/demo/demo-crown-2.jpg' }
-];
-
-const DEMO_VIDEO = {
-  src: '/demo/demo-video.mp4',
-  poster: '/demo/demo-thumb-1.jpg'
-};
-
-const TRENDING_FEED = [
-  { id: 't1', text: 'Just a quiet drama moment with Dr. Sollis. More to come.', likes: '210', shares: '45', video: DEMO_VIDEO.src, poster: DEMO_VIDEO.poster },
-  { id: 't2', text: 'Dropped my hero arc in Shadowstrike — this is the one. #NeonFrontier', likes: '18,700', shares: '3,400', thumb: '/demo/demo-thumb-2.jpg' },
-  { id: 't3', text: 'Vibing with the Maestro in Groove Odyssey ✨ Rhythm hits different when you’re in the scene.', likes: '4,300', shares: '980', thumb: '/demo/demo-thumb-3.jpg' }
-];
-
-export default function RoleverseDashboard() {
+export default function HomePage() {
   return (
     <Layout>
       <div className="space-y-6">
-        <section className="grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
-          <div className="rounded-[2.5rem] border border-white/10 bg-cyberPanel/95 p-8 shadow-glow-lg backdrop-blur-sm">
-            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Your imagination is the limit</p>
-            <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-tightest text-white sm:text-5xl">Create any avatar. Build any story. Launch any world.</h1>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Vekai is a creative platform where users can design avatars in any form imaginable—human, same-gender, animal, robot, mythical, role-based, or symbolic—and place them into scenes that feel limitless. Users can write stories inspired by films, documentaries, books, online games, ancient myths, imagination, or entirely original ideas. Inside the app, creators can build projects, raise campaigns, and turn their stories into full reel productions. Nothing is off limits—ideas become communities, discussions, and shared creative ecosystems, while any asset or project can be merchandised or used as a hub for fundraising.</p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                <p className="text-3xs uppercase tracking-wider text-cyberGray">Live Creators</p>
-                <p className="mt-3 text-2xl font-black text-white">8.4k</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                <p className="text-3xs uppercase tracking-wider text-cyberGray">Scenes active</p>
-                <p className="mt-3 text-2xl font-black text-white">24</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                <p className="text-3xs uppercase tracking-wider text-cyberGray">Weekly growth</p>
-                <p className="mt-3 text-2xl font-black text-cyberTeal">+16.8%</p>
-              </div>
-            </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
-              <PrimaryButton href="/explore" className="w-full" variant="primary" icon="search">
-                Explore Scenes
-              </PrimaryButton>
-              <PrimaryButton href="/community" className="w-full" variant="secondary" icon="user">
-                Join the Community
-              </PrimaryButton>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="min-w-0">
-                  <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Campaign Challenges</p>
-                  <h2 className="mt-3 text-xl font-black text-white">Leaderboard Picks</h2>
-                </div>
-                <span className="rounded-full bg-white/5 px-3 py-2 text-2xs uppercase tracking-wider text-cyberGrayMuted">Top 3</span>
-              </div>
-              <div className="mt-6 space-y-3">
-                {LEADERBOARD_ITEMS.map((item) => (
-                  <div key={item.rank} className="rounded-3xl border border-white/5 bg-white/5 p-4 transition hover:border-cyberPurple/40 hover:bg-white/10">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-2xs uppercase tracking-wider text-cyberGrayMuted">#{item.rank}</p>
-                        <p className="mt-2 text-sm font-black text-white truncate">{item.name}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-black text-cyberTeal">{item.score}</p>
-                        <p className="mt-1 text-xs text-cyberGray">{item.change}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="min-w-0">
-                  <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Community Cuts</p>
-                  <h2 className="mt-3 text-xl font-black text-white">Editor’s Favorites</h2>
-                </div>
-                <PrimaryButton href="/community" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto">
-                  View all cuts
+        <section className="rounded-[2.5rem] border border-white/10 bg-cyberPanel/95 p-8 shadow-glow-lg backdrop-blur-sm sm:p-10 lg:p-12">
+          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Welcome to Roleverse</p>
+              <h1 className="mt-4 max-w-2xl text-4xl font-black leading-tight tracking-tightest text-white sm:text-5xl">Build your world as a guest — or join the member experience when you&apos;re ready.</h1>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-cyberGray">Discover polished scenes, explore creator-led campaigns, and see how the platform flows from story idea to shared launch. Sign up to unlock the full member dashboard with campaign tools, community spaces, and workflow controls.</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <PrimaryButton href="/signup" className="w-full sm:w-auto" variant="primary" icon="user">
+                  Create account
+                </PrimaryButton>
+                <PrimaryButton href="/login" className="w-full sm:w-auto" variant="secondary" icon="search">
+                  Member login
                 </PrimaryButton>
               </div>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {CROWN_CUTS.map((item) => (
-                  <div key={item.id} className="overflow-hidden rounded-3xl border border-white/10 bg-cyberPanelDeep">
-                    <div className="relative overflow-hidden">
-                      <img src={item.image} alt={item.title} className="h-44 w-full object-cover transition duration-500 hover:scale-105" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      <span className="absolute left-4 top-4 rounded-full bg-cyberYellow/90 px-3 py-1 text-2xs font-black uppercase tracking-wider text-black">Official Cut</span>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-sm font-black uppercase tracking-wide text-white">{item.title}</h3>
-                      <p className="mt-2 text-xs uppercase tracking-wide text-cyberGray">{item.user}</p>
-                    </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyberPurple/30 via-cyberPanel/80 to-cyberTeal/20 p-6 shadow-glow">
+              <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">What you&apos;ll get</p>
+              <div className="mt-5 space-y-3">
+                {LANDING_FEATURES.map((feature) => (
+                  <div key={feature.title} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm font-black text-white">{feature.title}</p>
+                    <p className="mt-2 text-sm leading-6 text-cyberGray">{feature.text}</p>
                   </div>
                 ))}
               </div>
@@ -121,86 +42,30 @@ export default function RoleverseDashboard() {
           </div>
         </section>
 
-        <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="min-w-0">
-              <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Featured Scenes</p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-white">Top editorial picks</h2>
-            </div>
-            <PrimaryButton href="/explore" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto" icon="search">
-              Browse the library
+        <section className="grid gap-6 lg:grid-cols-3">
+          <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
+            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Explore</p>
+            <h2 className="mt-3 text-2xl font-black text-white">Browse curated scenes</h2>
+            <p className="mt-3 text-sm leading-7 text-cyberGray">See the quality of the experience before entering the member workspace.</p>
+            <PrimaryButton href="/explore" className="mt-5 w-full" variant="secondary" icon="search">
+              Open Explore
             </PrimaryButton>
           </div>
-          <div className="mt-6">
-            <MasonrySimple
-              items={FEATURED_SCENES}
-              renderItem={(scene) => (
-                <article key={scene.id} className="overflow-hidden rounded-4xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
-                  <div className="relative overflow-hidden">
-                    <img src={scene.image} alt={scene.title} className="w-full object-cover max-h-[420px] transition duration-500 hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-                    <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/50 px-3 py-1 text-2xs uppercase tracking-wider text-white backdrop-blur-sm">
-                      <span>{scene.label}</span>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <h3 className="text-xl font-black">{scene.title}</h3>
-                      <div className="mt-2 flex items-center justify-between text-3xs uppercase tracking-wider text-cyberGray">
-                        <span>{scene.role}</span>
-                        <span>{scene.views} views</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <PrimaryButton className="w-full text-2xs px-4 py-3 btn-small" variant="primary" icon="cast">
-                      Cast Into Scene
-                    </PrimaryButton>
-                  </div>
-                </article>
-              )}
-            />
-          </div>
-        </section>
-
-        <section className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="min-w-0">
-              <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Trending Creations</p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-white">Fresh stories in motion</h2>
-            </div>
-            <PrimaryButton href="/store" variant="secondary" className="rounded-full px-4 py-2 text-2xs w-full sm:w-auto" icon="shop">
-              Shop merch
+          <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
+            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Community</p>
+            <h2 className="mt-3 text-2xl font-black text-white">Join the discussion</h2>
+            <p className="mt-3 text-sm leading-7 text-cyberGray">Follow the latest drops, polls, and creator stories from the community hub.</p>
+            <PrimaryButton href="/community" className="mt-5 w-full" variant="secondary" icon="user">
+              Visit Community
             </PrimaryButton>
           </div>
-          <div className="mt-6 grid gap-6 xl:grid-cols-3">
-            {TRENDING_FEED.map((item) => (
-              <article key={item.id} className="overflow-hidden rounded-4xl border border-white/10 bg-cyberPanelDeep shadow-glow-sm transition duration-300 hover:-translate-y-1">
-                {item.video ? (
-                  <div className="relative overflow-hidden">
-                    <video
-                      controls
-                      src={item.video}
-                      poster={item.poster}
-                      className="h-64 w-full object-cover bg-black"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent" />
-                  </div>
-                ) : (
-                  <img src={item.thumb} alt="trending-thumb" className="h-64 w-full object-cover" />
-                )}
-                <div className="p-5">
-                  <p className="text-sm leading-6 text-cyberGray line-clamp-3">{item.text}</p>
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-2xs uppercase tracking-wider text-cyberGrayMuted">
-                    <span>♥ {item.likes}</span>
-                    <span>↻ {item.shares}</span>
-                  </div>
-                  <div className="mt-5">
-                    <PrimaryButton className="w-full px-4 py-3 text-2xs btn-small" variant="primary" icon="play">
-                      Watch clip
-                    </PrimaryButton>
-                  </div>
-                </div>
-              </article>
-            ))}
+          <div className="rounded-4xl border border-white/10 bg-cyberPanel/95 p-6 shadow-glow">
+            <p className="text-3xs font-black uppercase tracking-mega-xl text-cyberGray">Member access</p>
+            <h2 className="mt-3 text-2xl font-black text-white">Switch into the full app</h2>
+            <p className="mt-3 text-sm leading-7 text-cyberGray">Once you create an account, the dashboard unlocks campaign planning, community tools, and production workflows.</p>
+            <PrimaryButton href="/signup" className="mt-5 w-full" variant="primary" icon="play">
+              Jump in now
+            </PrimaryButton>
           </div>
         </section>
       </div>

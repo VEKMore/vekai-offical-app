@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { clearMemberMode, isMemberMode } from '../lib/auth';
 
 const TOP_NAV = [
-  { key: 'home', label: 'Home', href: '/' },
+  { key: 'dashboard', label: 'Dashboard', href: '/dashboard' },
   { key: 'explore', label: 'Explore', href: '/explore' },
   { key: 'avatar', label: 'Avatar Studio', href: '/avatar-builder' },
   { key: 'community', label: 'Community', href: '/community' },
   { key: 'campaigns', label: 'Campaigns', href: '/campaigns' },
-  { key: 'workflow', label: 'Workflow', href: '/workflow' },
-  { key: 'communication', label: 'Communication', href: '/communication' },
+  { key: 'workflow', label: 'Campaign Builder', href: '/workflow' },
   { key: 'store', label: 'Store', href: '/store' }
 ];
 
+const PUBLIC_NAV = [
+  { key: 'home', label: 'Home', href: '/' },
+  { key: 'explore', label: 'Explore', href: '/explore' },
+  { key: 'login', label: 'Login', href: '/login' },
+  { key: 'signup', label: 'Signup', href: '/signup' }
+];
+
 const SIDEBAR_NAV = [
+  { key: 'dashboard', label: 'Dashboard', href: '/dashboard' },
   { key: 'profile', label: 'Creator Profile', href: '/profile' },
   { key: 'avatar', label: 'Avatar Studio', href: '/avatar-builder' },
-  { key: 'workflow', label: 'Workflow & Sharing', href: '/workflow' },
-  { key: 'communication', label: 'Communication Hub', href: '/communication' },
+  { key: 'workflow', label: 'Campaign Builder', href: '/workflow' },
   { key: 'explore', label: 'Explore Scenes', href: '/explore' },
-  { key: 'community', label: 'Community', href: '/community' },
+  { key: 'community', label: 'Community Hub', href: '/community' },
   { key: 'campaigns', label: 'Active Campaigns', href: '/campaigns' },
   { key: 'store', label: 'Merchandise Store', href: '/store' }
 ];
@@ -28,10 +35,20 @@ export default function Layout({ children }) {
   const router = useRouter();
   const activePath = router.pathname;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMember, setIsMember] = useState(false);
 
   useEffect(() => {
+    setIsMember(isMemberMode());
     setMobileMenuOpen(false);
   }, [activePath]);
+
+  const handleLogout = () => {
+    clearMemberMode();
+    setIsMember(false);
+    router.push('/');
+  };
+
+  const navItems = isMember ? TOP_NAV : PUBLIC_NAV;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-cyberBlack text-cyberWhite font-sans">
@@ -46,7 +63,7 @@ export default function Layout({ children }) {
           <div className="flex items-center gap-8">
             <span className="text-sm font-black uppercase tracking-mega-xl text-white/90">ROLEVERSE</span>
             <nav aria-label="Primary site navigation" className="hidden items-center gap-5 text-3xs uppercase tracking-wider md:flex">
-              {TOP_NAV.map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.key}
                   href={item.href}
@@ -67,9 +84,24 @@ export default function Layout({ children }) {
             >
               {mobileMenuOpen ? 'Close' : 'Menu'}
             </button>
-            <button className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10">
-              Log Out
-            </button>
+            {isMember ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10"
+              >
+                Log Out
+              </button>
+            ) : (
+              <div className="hidden items-center gap-2 sm:flex">
+                <Link href="/login" className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:border-white/20 hover:bg-white/10">
+                  Login
+                </Link>
+                <Link href="/signup" className="rounded-full bg-cyberPurple px-4 py-2 text-sm font-black uppercase tracking-wide text-white transition hover:bg-cyberPurpleSoft">
+                  Signup
+                </Link>
+              </div>
+            )}
           </div>
         </div>
         <div
@@ -78,7 +110,7 @@ export default function Layout({ children }) {
           className={`fixed inset-x-0 top-[5.5rem] z-40 overflow-hidden border-b border-white/10 bg-cyberSurface/95 transition-all duration-300 md:hidden ${mobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'}`}
         >
           <nav aria-label="Mobile primary navigation" className="mx-auto flex max-w-[1480px] flex-col gap-2 px-4 py-4">
-            {TOP_NAV.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
@@ -94,45 +126,47 @@ export default function Layout({ children }) {
 
       <div className="pt-24">
         <div className="mx-auto flex w-full max-w-[1480px] gap-6 px-4 pb-12 sm:px-6 lg:px-8">
-          <aside className="hidden w-80 shrink-0 flex-col gap-6 rounded-3xl border border-white/10 bg-cyberSurface/95 p-6 shadow-glow-md backdrop-blur-xl md:flex">
-            <div className="space-y-6">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyberPurple to-cyberTeal text-base font-black text-cyberSurface">A</div>
-                  <div>
-                    <p className="text-sm font-black uppercase tracking-mega text-white">testuser@example.com</p>
-                    <p className="mt-1 text-xs uppercase tracking-mega text-cyberGrayMuted">Creator</p>
+          {isMember ? (
+            <aside className="hidden w-80 shrink-0 flex-col gap-6 rounded-3xl border border-white/10 bg-cyberSurface/95 p-6 shadow-glow-md backdrop-blur-xl md:flex">
+              <div className="space-y-6">
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyberPurple to-cyberTeal text-base font-black text-cyberSurface">A</div>
+                    <div>
+                      <p className="text-sm font-black uppercase tracking-mega text-white">testuser@example.com</p>
+                      <p className="mt-1 text-xs uppercase tracking-mega text-cyberGrayMuted">Creator</p>
+                    </div>
                   </div>
+                </div>
+
+                <div className="space-y-1">
+                  {SIDEBAR_NAV.map((item) => (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      className={`block rounded-2xl px-4 py-3 text-left text-sm uppercase tracking-wide transition ${activePath === item.href ? 'bg-cyberPanelShade text-cyberTeal shadow-glow-sm' : 'bg-white/5 text-cyberGrayMuted hover:bg-white/10'}`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
 
-              <div className="space-y-1">
-                {SIDEBAR_NAV.map((item) => (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    className={`block rounded-2xl px-4 py-3 text-left text-sm uppercase tracking-wide transition ${activePath === item.href ? 'bg-cyberPanelShade text-cyberTeal shadow-glow-sm' : 'bg-white/5 text-cyberGrayMuted hover:bg-white/10'}`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-cyberPurple/70 to-cyberTeal/20 p-5 text-white shadow-lg shadow-cyberTeal/10">
-              <p className="text-3xs font-black uppercase tracking-mega-xl text-white/80">STEAL THE SPOTLIGHT</p>
-              <p className="mt-3 text-sm leading-6 text-white/90">Cast yourself into a new scene and climb today’s leaderboard.</p>
+              <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-cyberPurple/70 to-cyberTeal/20 p-5 text-white shadow-lg shadow-cyberTeal/10">
+                <p className="text-3xs font-black uppercase tracking-mega-xl text-white/80">STEAL THE SPOTLIGHT</p>
+                <p className="mt-3 text-sm leading-6 text-white/90">Cast yourself into a new scene and climb today’s leaderboard.</p>
                 <Link href="/explore" className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-cyberSurface px-4 py-3 text-sm font-black uppercase tracking-wide-md text-white transition hover:bg-white/10">
                   Cast a Scene
                 </Link>
-              <Link href="/community" className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">
-                Community Hub
-              </Link>
-              <Link href="/" className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">
-                Account Settings
-              </Link>
-            </div>
-          </aside>
+                <Link href="/community" className="mt-3 block rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">
+                  Community Hub
+                </Link>
+                <Link href="/dashboard" className="mt-3 block rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-black uppercase tracking-wide text-white/80 transition hover:bg-white/10">
+                  Account Settings
+                </Link>
+              </div>
+            </aside>
+          ) : null}
 
           <main className="flex-1 min-h-[calc(100vh-6rem)]">
             {children}
